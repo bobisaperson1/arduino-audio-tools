@@ -120,7 +120,7 @@ $(function() {
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordtype">int</span> pathStart = urlStr.<a class="code" href="classaudio__tools_1_1_str.html#aee2206b824ab694471714e3fdc981652">indexOf</a>(<span class="stringliteral">&quot;/&quot;</span>, protocolEnd + 4);</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">int</span> portStart = urlStr.<a class="code" href="classaudio__tools_1_1_str.html#aee2206b824ab694471714e3fdc981652">indexOf</a>(<span class="stringliteral">&quot;:&quot;</span>, protocolEnd + 3);</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="comment">// check if the found portStart isn&#39;t part of the path</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    portStart = portStart &lt; pathStart ? portStart : -1;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordflow">if</span> (pathStart&gt;=0) portStart = portStart &lt; pathStart ? portStart : -1;</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordtype">int</span> hostEnd = portStart != -1 ? portStart : pathStart;</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="comment">// we have not path -&gt; so then host end is the end of string</span></div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordflow">if</span> (hostEnd == -1) {</div>
