@@ -196,9 +196,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaudio__tools_1_1_audio_source.html#a1d03133fe86ead67820854ef63dadfbd">setTimeoutAutoNext</a> (int millisec)</td></tr>
 <tr class="memdesc:a1d03133fe86ead67820854ef63dadfbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the timeout which is triggering to move to the next stream. - the default value is 500 ms. <br /></td></tr>
 <tr class="separator:a1d03133fe86ead67820854ef63dadfbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a22727e9c338fb1aaa6722031445373c3"><td class="memItemLeft" align="right" valign="top"><a id="a22727e9c338fb1aaa6722031445373c3"></a>
-long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaudio__tools_1_1_audio_source_s_d_f_a_t.html#a22727e9c338fb1aaa6722031445373c3">size</a> ()</td></tr>
-<tr class="memdesc:a22727e9c338fb1aaa6722031445373c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides the number of files (The max index is <a class="el" href="classaudio__tools_1_1_audio_source_s_d_f_a_t.html#a22727e9c338fb1aaa6722031445373c3" title="Provides the number of files (The max index is size()-1): WARNING this is very slow if you have a lot...">size()</a>-1): WARNING this is very slow if you have a lot of files in many subdirectories. <br /></td></tr>
+<tr class="memitem:a22727e9c338fb1aaa6722031445373c3"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaudio__tools_1_1_audio_source_s_d_f_a_t.html#a22727e9c338fb1aaa6722031445373c3">size</a> ()</td></tr>
 <tr class="separator:a22727e9c338fb1aaa6722031445373c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac20e50555537a80d3d535eb2225cc738"><td class="memItemLeft" align="right" valign="top"><a id="ac20e50555537a80d3d535eb2225cc738"></a>
 virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaudio__tools_1_1_audio_source.html#ac20e50555537a80d3d535eb2225cc738">timeoutAutoNext</a> ()</td></tr>
@@ -253,9 +251,9 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><b>file_name_pat
 <tr class="memitem:a5a9009123e28a837a6063c67d723118f"><td class="memItemLeft" align="right" valign="top"><a id="a5a9009123e28a837a6063c67d723118f"></a>
 char *&#160;</td><td class="memItemRight" valign="bottom"><b>file_name_pattern</b> = (char*) &quot;*&quot;</td></tr>
 <tr class="separator:a5a9009123e28a837a6063c67d723118f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae48ee9ff47ed1408fc38a81d7964465a"><td class="memItemLeft" align="right" valign="top"><a id="ae48ee9ff47ed1408fc38a81d7964465a"></a>
+<tr class="memitem:ac42a02c8e1f12138f0564e2cd49e057b"><td class="memItemLeft" align="right" valign="top"><a id="ac42a02c8e1f12138f0564e2cd49e057b"></a>
 <a class="el" href="classaudio__tools_1_1_s_d_direct.html">SDDirect</a>&lt; AudioFs, AudioFile &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>idx</b> {sd}</td></tr>
-<tr class="separator:ae48ee9ff47ed1408fc38a81d7964465a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:ac42a02c8e1f12138f0564e2cd49e057b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b9f658f698e81d205ba9019bbb94191"><td class="memItemLeft" align="right" valign="top"><a id="a6b9f658f698e81d205ba9019bbb94191"></a>
 size_t&#160;</td><td class="memItemRight" valign="bottom"><b>idx_pos</b> = 0</td></tr>
 <tr class="separator:a6b9f658f698e81d205ba9019bbb94191"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -263,7 +261,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>idx_pos</b> = 0</td
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_sd_setup</b> = false</td></tr>
 <tr class="separator:a2db7478820de336d99141f1329d7af7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a24a8f3b40e6ac5880e21669a79c7ae70"><td class="memItemLeft" align="right" valign="top"><a id="a24a8f3b40e6ac5880e21669a79c7ae70"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>owns_cfg</b> =false</td></tr>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>owns_cfg</b> = false</td></tr>
 <tr class="separator:a24a8f3b40e6ac5880e21669a79c7ae70"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a570eb7d1aedcc138630364e8c69cc25d"><td class="memItemLeft" align="right" valign="top"><a id="a570eb7d1aedcc138630364e8c69cc25d"></a>
 SdSpiConfig *&#160;</td><td class="memItemRight" valign="bottom"><b>p_cfg</b> = nullptr</td></tr>
@@ -315,6 +313,32 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>timeout_auto_next_valu
 </div><div class="memdoc">
 <p>Defines the regex filter criteria for selecting files. E.g. ".*Bob
 Dylan.*" </p>
+
+</div>
+</div>
+<a id="a22727e9c338fb1aaa6722031445373c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22727e9c338fb1aaa6722031445373c3">&#9670;&nbsp;</a></span>size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">long size </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Provides the number of files (The max index is <a class="el" href="classaudio__tools_1_1_audio_source_s_d_f_a_t.html#a22727e9c338fb1aaa6722031445373c3">size()</a>-1): WARNING this is very slow if you have a lot of files in many subdirectories </p>
 
 </div>
 </div>
