@@ -708,7 +708,7 @@ $(function() {
 <div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;      this-&gt;max_count = count;</div>
 <div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;      p_stream = &amp;<span class="keyword">null</span>;</div>
 <div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;      p_print = &amp;<span class="keyword">null</span>;</div>
-<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;      start_time = <a class="code" href="namespaceaudio__tools.html#adb94fbd930038e1510574dd4bcf07fe1">millis</a>();</div>
+<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;      start_time = <a class="code" href="namespaceaudio__tools.html#a5e3b5cd9da90a770b25160f8b0126982">millis</a>();</div>
 <div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;      p_logout = logOut;</div>
 <div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;    }</div>
 <div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160; </div>
@@ -716,7 +716,7 @@ $(function() {
 <div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;      this-&gt;count = count;</div>
 <div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;      this-&gt;max_count = count;</div>
 <div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;      <a class="code" href="classaudio__tools_1_1_measuring_stream.html#a05ff4cf361d54457ed8586e8c14aa922">setOutput</a>(print);</div>
-<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;      start_time = <a class="code" href="namespaceaudio__tools.html#adb94fbd930038e1510574dd4bcf07fe1">millis</a>();</div>
+<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;      start_time = <a class="code" href="namespaceaudio__tools.html#a5e3b5cd9da90a770b25160f8b0126982">millis</a>();</div>
 <div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;      p_logout = logOut;</div>
 <div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;    }</div>
 <div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160; </div>
@@ -724,7 +724,7 @@ $(function() {
 <div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;      this-&gt;count = count;</div>
 <div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;      this-&gt;max_count = count;</div>
 <div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;      <a class="code" href="classaudio__tools_1_1_measuring_stream.html#adb3b6de56b862417b2d77962d06db58c">setStream</a>(stream);</div>
-<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;      start_time = <a class="code" href="namespaceaudio__tools.html#adb94fbd930038e1510574dd4bcf07fe1">millis</a>();</div>
+<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;      start_time = <a class="code" href="namespaceaudio__tools.html#a5e3b5cd9da90a770b25160f8b0126982">millis</a>();</div>
 <div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;      p_logout = logOut;</div>
 <div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;    }</div>
 <div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160; </div>
@@ -797,7 +797,7 @@ $(function() {
 <div class="line"><a name="l00829"></a><span class="lineno">  829</span>&#160;      total_bytes+=len;</div>
 <div class="line"><a name="l00830"></a><span class="lineno">  830</span>&#160; </div>
 <div class="line"><a name="l00831"></a><span class="lineno">  831</span>&#160;      <span class="keywordflow">if</span> (count&lt;=0){</div>
-<div class="line"><a name="l00832"></a><span class="lineno">  832</span>&#160;        uint32_t end_time = <a class="code" href="namespaceaudio__tools.html#adb94fbd930038e1510574dd4bcf07fe1">millis</a>();</div>
+<div class="line"><a name="l00832"></a><span class="lineno">  832</span>&#160;        uint32_t end_time = <a class="code" href="namespaceaudio__tools.html#a5e3b5cd9da90a770b25160f8b0126982">millis</a>();</div>
 <div class="line"><a name="l00833"></a><span class="lineno">  833</span>&#160;        <span class="keywordtype">int</span> time_diff = end_time - start_time; <span class="comment">// in ms</span></div>
 <div class="line"><a name="l00834"></a><span class="lineno">  834</span>&#160;        <span class="keywordflow">if</span> (time_diff&gt;0){</div>
 <div class="line"><a name="l00835"></a><span class="lineno">  835</span>&#160;          bytes_per_second = total_bytes / time_diff * 1000;</div>
@@ -1011,7 +1011,7 @@ $(function() {
 <div class="line"><a name="l01080"></a><span class="lineno"> 1080</span>&#160; </div>
 <div class="line"><a name="l01081"></a><span class="lineno"> 1081</span>&#160;  <span class="comment">// (re)starts the timing</span></div>
 <div class="line"><a name="l01082"></a><span class="lineno"> 1082</span>&#160;  <span class="keywordtype">void</span> startDelay() { </div>
-<div class="line"><a name="l01083"></a><span class="lineno"> 1083</span>&#160;    start_time = <a class="code" href="namespaceaudio__tools.html#aba89185652ca247a1b3995703a2082e5">micros</a>(); </div>
+<div class="line"><a name="l01083"></a><span class="lineno"> 1083</span>&#160;    start_time = micros(); </div>
 <div class="line"><a name="l01084"></a><span class="lineno"> 1084</span>&#160;    sum_frames = 0;</div>
 <div class="line"><a name="l01085"></a><span class="lineno"> 1085</span>&#160;  }</div>
 <div class="line"><a name="l01086"></a><span class="lineno"> 1086</span>&#160; </div>
@@ -1049,14 +1049,14 @@ $(function() {
 <div class="line"><a name="l01118"></a><span class="lineno"> 1118</span>&#160;  <span class="comment">// delay</span></div>
 <div class="line"><a name="l01119"></a><span class="lineno"> 1119</span>&#160;  <span class="keywordtype">void</span> delayFrames(<span class="keywordtype">size_t</span> frames) {</div>
 <div class="line"><a name="l01120"></a><span class="lineno"> 1120</span>&#160;    sum_frames += frames;</div>
-<div class="line"><a name="l01121"></a><span class="lineno"> 1121</span>&#160;    uint64_t durationUsEff = <a class="code" href="namespaceaudio__tools.html#aba89185652ca247a1b3995703a2082e5">micros</a>() - start_time;</div>
+<div class="line"><a name="l01121"></a><span class="lineno"> 1121</span>&#160;    uint64_t durationUsEff = micros() - start_time;</div>
 <div class="line"><a name="l01122"></a><span class="lineno"> 1122</span>&#160;    uint64_t durationUsToBe = getDelayUs(sum_frames);</div>
 <div class="line"><a name="l01123"></a><span class="lineno"> 1123</span>&#160;    int64_t waitUs = durationUsToBe - durationUsEff + cfg.correction_us;</div>
 <div class="line"><a name="l01124"></a><span class="lineno"> 1124</span>&#160;    LOGD(<span class="stringliteral">&quot;wait us: %ld&quot;</span>, <span class="keyword">static_cast&lt;</span><span class="keywordtype">long</span><span class="keyword">&gt;</span>(waitUs));</div>
 <div class="line"><a name="l01125"></a><span class="lineno"> 1125</span>&#160;    <span class="keywordflow">if</span> (waitUs &gt; 0) {</div>
 <div class="line"><a name="l01126"></a><span class="lineno"> 1126</span>&#160;      int64_t waitMs = waitUs / 1000;</div>
-<div class="line"><a name="l01127"></a><span class="lineno"> 1127</span>&#160;      <span class="keywordflow">if</span> (waitMs &gt; 0) <a class="code" href="namespaceaudio__tools.html#a7f2dfce1046bdd2a2b753643726c2346">delay</a>(waitMs);</div>
-<div class="line"><a name="l01128"></a><span class="lineno"> 1128</span>&#160;      <a class="code" href="namespaceaudio__tools.html#a47273e9d65db6c48a1576ab3f4f33109">delayMicroseconds</a>(waitUs - (waitMs * 1000));</div>
+<div class="line"><a name="l01127"></a><span class="lineno"> 1127</span>&#160;      <span class="keywordflow">if</span> (waitMs &gt; 0) delay(waitMs);</div>
+<div class="line"><a name="l01128"></a><span class="lineno"> 1128</span>&#160;      delayMicroseconds(waitUs - (waitMs * 1000));</div>
 <div class="line"><a name="l01129"></a><span class="lineno"> 1129</span>&#160;    } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l01130"></a><span class="lineno"> 1130</span>&#160;      LOGD(<span class="stringliteral">&quot;negative delay!&quot;</span>)</div>
 <div class="line"><a name="l01131"></a><span class="lineno"> 1131</span>&#160;    }</div>
@@ -1664,7 +1664,7 @@ $(function() {
 <div class="line"><a name="l01815"></a><span class="lineno"> 1815</span>&#160;  }</div>
 <div class="line"><a name="l01816"></a><span class="lineno"> 1816</span>&#160; </div>
 <div class="line"><a name="l01818"></a><span class="lineno"><a class="line" href="classaudio__tools_1_1_timer_callback_audio_stream.html#a7aa7718b1f3579d03c244a597cd03b85"> 1818</a></span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classaudio__tools_1_1_timer_callback_audio_stream.html#a7aa7718b1f3579d03c244a597cd03b85">measureSampleRate</a>() {</div>
-<div class="line"><a name="l01819"></a><span class="lineno"> 1819</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> ms = <a class="code" href="namespaceaudio__tools.html#adb94fbd930038e1510574dd4bcf07fe1">millis</a>();</div>
+<div class="line"><a name="l01819"></a><span class="lineno"> 1819</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> ms = <a class="code" href="namespaceaudio__tools.html#a5e3b5cd9da90a770b25160f8b0126982">millis</a>();</div>
 <div class="line"><a name="l01820"></a><span class="lineno"> 1820</span>&#160;    <span class="keywordflow">if</span> (lastTimestamp &gt; 0u) {</div>
 <div class="line"><a name="l01821"></a><span class="lineno"> 1821</span>&#160;      uint32_t diff = ms - lastTimestamp;</div>
 <div class="line"><a name="l01822"></a><span class="lineno"> 1822</span>&#160;      <span class="keywordflow">if</span> (diff &gt; 0) {</div>
@@ -1871,10 +1871,7 @@ $(function() {
 <div class="ttc" id="agroup__basic_html_ga8cbd91a8bac9b5ab425112be1620eb49"><div class="ttname"><a href="group__basic.html#ga8cbd91a8bac9b5ab425112be1620eb49">audio_tools::RxTxMode</a></div><div class="ttdeci">RxTxMode</div><div class="ttdoc">The Microcontroller is the Audio Source (TX_MODE) or Audio Sink (RX_MODE). RXTX_MODE is Source and Si...</div><div class="ttdef"><b>Definition:</b> AudioTypes.h:26</div></div>
 <div class="ttc" id="anamespaceaudio__tools_html"><div class="ttname"><a href="namespaceaudio__tools.html">audio_tools</a></div><div class="ttdoc">Generic Implementation of sound input and output for desktop environments using portaudio.</div><div class="ttdef"><b>Definition:</b> AnalogAudio.h:10</div></div>
 <div class="ttc" id="anamespaceaudio__tools_html_a05732a8617ebf1fc88e99fa12d8f5f85"><div class="ttname"><a href="namespaceaudio__tools.html#a05732a8617ebf1fc88e99fa12d8f5f85">audio_tools::readSamples</a></div><div class="ttdeci">size_t readSamples(Stream *p_stream, T *data, int samples, int retryCount=-1)</div><div class="ttdoc">guaranteed to return the requested data</div><div class="ttdef"><b>Definition:</b> AudioTypes.h:434</div></div>
-<div class="ttc" id="anamespaceaudio__tools_html_a47273e9d65db6c48a1576ab3f4f33109"><div class="ttname"><a href="namespaceaudio__tools.html#a47273e9d65db6c48a1576ab3f4f33109">audio_tools::delayMicroseconds</a></div><div class="ttdeci">void delayMicroseconds(uint32_t ms)</div><div class="ttdoc">Waits for the indicated milliseconds.</div></div>
-<div class="ttc" id="anamespaceaudio__tools_html_a7f2dfce1046bdd2a2b753643726c2346"><div class="ttname"><a href="namespaceaudio__tools.html#a7f2dfce1046bdd2a2b753643726c2346">audio_tools::delay</a></div><div class="ttdeci">void delay(uint32_t ms)</div><div class="ttdoc">Waits for the indicated milliseconds.</div><div class="ttdef"><b>Definition:</b> Millis.h:11</div></div>
-<div class="ttc" id="anamespaceaudio__tools_html_aba89185652ca247a1b3995703a2082e5"><div class="ttname"><a href="namespaceaudio__tools.html#aba89185652ca247a1b3995703a2082e5">audio_tools::micros</a></div><div class="ttdeci">uint32_t micros()</div><div class="ttdoc">Returns the milliseconds since the start.</div></div>
-<div class="ttc" id="anamespaceaudio__tools_html_adb94fbd930038e1510574dd4bcf07fe1"><div class="ttname"><a href="namespaceaudio__tools.html#adb94fbd930038e1510574dd4bcf07fe1">audio_tools::millis</a></div><div class="ttdeci">uint32_t millis()</div><div class="ttdoc">Returns the milliseconds since the start.</div><div class="ttdef"><b>Definition:</b> Millis.h:18</div></div>
+<div class="ttc" id="anamespaceaudio__tools_html_a5e3b5cd9da90a770b25160f8b0126982"><div class="ttname"><a href="namespaceaudio__tools.html#a5e3b5cd9da90a770b25160f8b0126982">audio_tools::millis</a></div><div class="ttdeci">uint32_t millis()</div><div class="ttdoc">Returns the milliseconds since the start.</div><div class="ttdef"><b>Definition:</b> Time.h:12</div></div>
 <div class="ttc" id="astructaudio__tools_1_1_audio_info_html"><div class="ttname"><a href="structaudio__tools_1_1_audio_info.html">audio_tools::AudioInfo</a></div><div class="ttdoc">Basic Audio information which drives e.g. I2S.</div><div class="ttdef"><b>Definition:</b> AudioTypes.h:50</div></div>
 <div class="ttc" id="astructaudio__tools_1_1_audio_info_html_a029ace15f5ede8def0a6ab5c97a81b25"><div class="ttname"><a href="structaudio__tools_1_1_audio_info.html#a029ace15f5ede8def0a6ab5c97a81b25">audio_tools::AudioInfo::copyFrom</a></div><div class="ttdeci">void copyFrom(AudioInfo info)</div><div class="ttdoc">Same as set.</div><div class="ttdef"><b>Definition:</b> AudioTypes.h:105</div></div>
 <div class="ttc" id="astructaudio__tools_1_1_audio_info_html_a0e86c53dfa0ad5dc0d2ecd0304fabc95"><div class="ttname"><a href="structaudio__tools_1_1_audio_info.html#a0e86c53dfa0ad5dc0d2ecd0304fabc95">audio_tools::AudioInfo::sample_rate</a></div><div class="ttdeci">sample_rate_t sample_rate</div><div class="ttdoc">Sample Rate: e.g 44100.</div><div class="ttdef"><b>Definition:</b> AudioTypes.h:53</div></div>

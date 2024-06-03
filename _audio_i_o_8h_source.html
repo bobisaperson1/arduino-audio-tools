@@ -147,7 +147,7 @@ $(function() {
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;          }</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;          <span class="comment">// wait for some more data</span></div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;          <a class="code" href="namespaceaudio__tools.html#a7f2dfce1046bdd2a2b753643726c2346">delay</a>(5);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;          delay(5);</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        }</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;      }</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;      <a class="code" href="classaudio__tools_1_1_transformation_reader.html#a5eb925b04b41ee08d4eda13dfdb0f967">restoreOutput</a>(tmp);</div>
@@ -466,7 +466,7 @@ $(function() {
 <div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;  <span class="keywordtype">bool</span> begin()<span class="keyword"> override </span>{</div>
 <div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;    calculateByteLimits();</div>
 <div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;    current_bytes = 0;</div>
-<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;    LOGI(<span class="stringliteral">&quot;byte range %ld - %ld&quot;</span>, start_bytes, end_bytes);</div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;    LOGI(<span class="stringliteral">&quot;byte range %u - %u&quot;</span>,(<span class="keywordtype">unsigned</span>) start_bytes,(<span class="keywordtype">unsigned</span>) end_bytes);</div>
 <div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;  }</div>
 <div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160; </div>
@@ -811,7 +811,6 @@ $(function() {
 <div class="ttc" id="aclassaudio__tools_1_1_transformation_reader_html_abe28e04dfb095f0b1ff15389330b1161"><div class="ttname"><a href="classaudio__tools_1_1_transformation_reader.html#abe28e04dfb095f0b1ff15389330b1161">audio_tools::TransformationReader::setupOutput</a></div><div class="ttdeci">Print * setupOutput()</div><div class="ttdef"><b>Definition:</b> AudioIO.h:123</div></div>
 <div class="ttc" id="aclassaudio__tools_1_1_vector_html"><div class="ttname"><a href="classaudio__tools_1_1_vector.html">audio_tools::Vector&lt; uint16_t &gt;</a></div></div>
 <div class="ttc" id="anamespaceaudio__tools_html"><div class="ttname"><a href="namespaceaudio__tools.html">audio_tools</a></div><div class="ttdoc">Generic Implementation of sound input and output for desktop environments using portaudio.</div><div class="ttdef"><b>Definition:</b> AnalogAudio.h:10</div></div>
-<div class="ttc" id="anamespaceaudio__tools_html_a7f2dfce1046bdd2a2b753643726c2346"><div class="ttname"><a href="namespaceaudio__tools.html#a7f2dfce1046bdd2a2b753643726c2346">audio_tools::delay</a></div><div class="ttdeci">void delay(uint32_t ms)</div><div class="ttdoc">Waits for the indicated milliseconds.</div><div class="ttdef"><b>Definition:</b> Millis.h:11</div></div>
 <div class="ttc" id="astructaudio__tools_1_1_audio_info_html"><div class="ttname"><a href="structaudio__tools_1_1_audio_info.html">audio_tools::AudioInfo</a></div><div class="ttdoc">Basic Audio information which drives e.g. I2S.</div><div class="ttdef"><b>Definition:</b> AudioTypes.h:50</div></div>
 <div class="ttc" id="astructaudio__tools_1_1_audio_info_html_a0e86c53dfa0ad5dc0d2ecd0304fabc95"><div class="ttname"><a href="structaudio__tools_1_1_audio_info.html#a0e86c53dfa0ad5dc0d2ecd0304fabc95">audio_tools::AudioInfo::sample_rate</a></div><div class="ttdeci">sample_rate_t sample_rate</div><div class="ttdoc">Sample Rate: e.g 44100.</div><div class="ttdef"><b>Definition:</b> AudioTypes.h:53</div></div>
 <div class="ttc" id="astructaudio__tools_1_1_audio_info_html_a1ac7822956f57069d76da865d6b33c55"><div class="ttname"><a href="structaudio__tools_1_1_audio_info.html#a1ac7822956f57069d76da865d6b33c55">audio_tools::AudioInfo::channels</a></div><div class="ttdeci">uint16_t channels</div><div class="ttdoc">Number of channels: 2=stereo, 1=mono.</div><div class="ttdef"><b>Definition:</b> AudioTypes.h:55</div></div>

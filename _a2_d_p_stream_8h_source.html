@@ -185,7 +185,7 @@ $(function() {
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                    a2dp_source-&gt;start_raw((<span class="keywordtype">char</span>*)cfg.<a class="code" href="classaudio__tools_1_1_a2_d_p_config.html#a8f8f80d37794cde9472343e4487ba3eb">name</a>, a2dp_stream_source_sound_data);  </div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                    <span class="keywordflow">while</span>(!a2dp_source-&gt;is_connected()){</div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                        LOGD(<span class="stringliteral">&quot;waiting for connection&quot;</span>);</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                        <a class="code" href="namespaceaudio__tools.html#a7f2dfce1046bdd2a2b753643726c2346">delay</a>(1000);</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                        delay(1000);</div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                    }</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                    LOGI(<span class="stringliteral">&quot;a2dp_source is connected...&quot;</span>);</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                    <a class="code" href="classaudio__tools_1_1_a2_d_p_stream.html#a135e3e6aa275bd03ad26ba8377c4f29a">notify_base_Info</a>(44100);</div>
@@ -204,7 +204,7 @@ $(function() {
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                    a2dp_sink-&gt;start((<span class="keywordtype">char</span>*)cfg.<a class="code" href="classaudio__tools_1_1_a2_d_p_config.html#a8f8f80d37794cde9472343e4487ba3eb">name</a>);</div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                    <span class="keywordflow">while</span>(!a2dp_sink-&gt;is_connected()){</div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                        LOGD(<span class="stringliteral">&quot;waiting for connection&quot;</span>);</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                        <a class="code" href="namespaceaudio__tools.html#a7f2dfce1046bdd2a2b753643726c2346">delay</a>(1000);</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                        delay(1000);</div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                    }</div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                    LOGI(<span class="stringliteral">&quot;a2dp_sink is connected...&quot;</span>);</div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                    is_a2dp_active = <span class="keyword">true</span>;</div>
@@ -253,7 +253,7 @@ $(function() {
 <div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;                <span class="comment">// blocking write: if buffer is full we wait</span></div>
 <div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;                <span class="keywordflow">while</span>(len &gt; 0.9f * a2dp_buffer.<a class="code" href="classaudio__tools_1_1_buffer_r_t_o_s.html#a87b51853b7bf1bc90d9efa9f3b8d4fea">availableForWrite</a>() * 100 / 90){</div>
 <div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                    LOGD(<span class="stringliteral">&quot;Waiting for buffer to be available&quot;</span>);</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;                    <a class="code" href="namespaceaudio__tools.html#a7f2dfce1046bdd2a2b753643726c2346">delay</a>(5);</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;                    delay(5);</div>
 <div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                }</div>
 <div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;            }</div>
 <div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160; </div>
@@ -262,7 +262,7 @@ $(function() {
 <div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;            LOGD(<span class="stringliteral">&quot;write %d -&gt; %d&quot;</span>, len, result);</div>
 <div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;            <span class="keywordflow">if</span> (config.mode == TX_MODE){</div>
 <div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                <span class="comment">// give the callback a chance to retrieve the data</span></div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;                <a class="code" href="namespaceaudio__tools.html#a7f2dfce1046bdd2a2b753643726c2346">delay</a>(config.<a class="code" href="classaudio__tools_1_1_a2_d_p_config.html#a4a6ae70b7ddcde0c52c482376f09f2e8">delay_ms</a>);</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;                delay(config.<a class="code" href="classaudio__tools_1_1_a2_d_p_config.html#a4a6ae70b7ddcde0c52c482376f09f2e8">delay_ms</a>);</div>
 <div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;            }</div>
 <div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;            <span class="keywordflow">return</span> result;</div>
 <div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;        }</div>
@@ -422,7 +422,6 @@ $(function() {
 <div class="ttc" id="anamespaceaudio__tools_html"><div class="ttname"><a href="namespaceaudio__tools.html">audio_tools</a></div><div class="ttdoc">Generic Implementation of sound input and output for desktop environments using portaudio.</div><div class="ttdef"><b>Definition:</b> AnalogAudio.h:10</div></div>
 <div class="ttc" id="anamespaceaudio__tools_html_a1d4acd31001a6bca774a5d7f5eb98afa"><div class="ttname"><a href="namespaceaudio__tools.html#a1d4acd31001a6bca774a5d7f5eb98afa">audio_tools::A2DPNoData</a></div><div class="ttdeci">A2DPNoData</div><div class="ttdoc">A2DP Action when there is no data.</div><div class="ttdef"><b>Definition:</b> A2DPStream.h:34</div></div>
 <div class="ttc" id="anamespaceaudio__tools_html_a2b5699409c82146721f7ed069d134dca"><div class="ttname"><a href="namespaceaudio__tools.html#a2b5699409c82146721f7ed069d134dca">audio_tools::A2DPStartLogic</a></div><div class="ttdeci">A2DPStartLogic</div><div class="ttdoc">A2DP Startup Logic.</div><div class="ttdef"><b>Definition:</b> A2DPStream.h:32</div></div>
-<div class="ttc" id="anamespaceaudio__tools_html_a7f2dfce1046bdd2a2b753643726c2346"><div class="ttname"><a href="namespaceaudio__tools.html#a7f2dfce1046bdd2a2b753643726c2346">audio_tools::delay</a></div><div class="ttdeci">void delay(uint32_t ms)</div><div class="ttdoc">Waits for the indicated milliseconds.</div><div class="ttdef"><b>Definition:</b> Millis.h:11</div></div>
 <div class="ttc" id="astructaudio__tools_1_1_audio_info_html"><div class="ttname"><a href="structaudio__tools_1_1_audio_info.html">audio_tools::AudioInfo</a></div><div class="ttdoc">Basic Audio information which drives e.g. I2S.</div><div class="ttdef"><b>Definition:</b> AudioTypes.h:50</div></div>
 <div class="ttc" id="astructaudio__tools_1_1_audio_info_html_a0e86c53dfa0ad5dc0d2ecd0304fabc95"><div class="ttname"><a href="structaudio__tools_1_1_audio_info.html#a0e86c53dfa0ad5dc0d2ecd0304fabc95">audio_tools::AudioInfo::sample_rate</a></div><div class="ttdeci">sample_rate_t sample_rate</div><div class="ttdoc">Sample Rate: e.g 44100.</div><div class="ttdef"><b>Definition:</b> AudioTypes.h:53</div></div>
 <div class="ttc" id="astructaudio__tools_1_1_audio_info_html_a1ac7822956f57069d76da865d6b33c55"><div class="ttname"><a href="structaudio__tools_1_1_audio_info.html#a1ac7822956f57069d76da865d6b33c55">audio_tools::AudioInfo::channels</a></div><div class="ttdeci">uint16_t channels</div><div class="ttdoc">Number of channels: 2=stereo, 1=mono.</div><div class="ttdef"><b>Definition:</b> AudioTypes.h:55</div></div>

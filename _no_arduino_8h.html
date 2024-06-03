@@ -86,6 +86,7 @@ $(function() {
 <code>#include &lt;ctype.h&gt;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
 <code>#include &lt;chrono&gt;</code><br />
+<code>#include &quot;AudioConfig.h&quot;</code><br />
 <code>#include &quot;driver/gpio.h&quot;</code><br />
 </div>
 <p><a href="_no_arduino_8h_source.html">Go to the source code of this file.</a></p>
@@ -143,14 +144,6 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a7f2dfce1046bdd2a2b753643726c2346"><td class="memItemLeft" align="right" valign="top"><a id="a7f2dfce1046bdd2a2b753643726c2346"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceaudio__tools.html#a7f2dfce1046bdd2a2b753643726c2346">delay</a> (uint32_t ms)</td></tr>
-<tr class="memdesc:a7f2dfce1046bdd2a2b753643726c2346"><td class="mdescLeft">&#160;</td><td class="mdescRight">Waits for the indicated milliseconds. <br /></td></tr>
-<tr class="separator:a7f2dfce1046bdd2a2b753643726c2346"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a47273e9d65db6c48a1576ab3f4f33109"><td class="memItemLeft" align="right" valign="top"><a id="a47273e9d65db6c48a1576ab3f4f33109"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceaudio__tools.html#a47273e9d65db6c48a1576ab3f4f33109">delayMicroseconds</a> (uint32_t ms)</td></tr>
-<tr class="memdesc:a47273e9d65db6c48a1576ab3f4f33109"><td class="mdescLeft">&#160;</td><td class="mdescRight">Waits for the indicated milliseconds. <br /></td></tr>
-<tr class="separator:a47273e9d65db6c48a1576ab3f4f33109"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae1e3d979645a535a8ce49f935392d8bc"><td class="memItemLeft" align="right" valign="top"><a id="ae1e3d979645a535a8ce49f935392d8bc"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_no_arduino_8h.html#ae1e3d979645a535a8ce49f935392d8bc">digitalRead</a> (int pin)</td></tr>
 <tr class="memdesc:ae1e3d979645a535a8ce49f935392d8bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">e.g. for AudioActions <br /></td></tr>
@@ -159,14 +152,6 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_no_a
 long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceaudio__tools.html#a07f83b0475b1f3c98eccd9b1642dd1cb">map</a> (long x, long in_min, long in_max, long out_min, long out_max)</td></tr>
 <tr class="memdesc:a07f83b0475b1f3c98eccd9b1642dd1cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maps input to output values. <br /></td></tr>
 <tr class="separator:a07f83b0475b1f3c98eccd9b1642dd1cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aba89185652ca247a1b3995703a2082e5"><td class="memItemLeft" align="right" valign="top"><a id="aba89185652ca247a1b3995703a2082e5"></a>
-uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceaudio__tools.html#aba89185652ca247a1b3995703a2082e5">micros</a> ()</td></tr>
-<tr class="memdesc:aba89185652ca247a1b3995703a2082e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the milliseconds since the start. <br /></td></tr>
-<tr class="separator:aba89185652ca247a1b3995703a2082e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adb94fbd930038e1510574dd4bcf07fe1"><td class="memItemLeft" align="right" valign="top"><a id="adb94fbd930038e1510574dd4bcf07fe1"></a>
-uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceaudio__tools.html#adb94fbd930038e1510574dd4bcf07fe1">millis</a> ()</td></tr>
-<tr class="memdesc:adb94fbd930038e1510574dd4bcf07fe1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the milliseconds since the start. <br /></td></tr>
-<tr class="separator:adb94fbd930038e1510574dd4bcf07fe1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac7bdb53335528ad073ca13eb2b1bdc00"><td class="memItemLeft" align="right" valign="top"><a id="ac7bdb53335528ad073ca13eb2b1bdc00"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>pinMode</b> (int pin, int mode)</td></tr>
 <tr class="separator:ac7bdb53335528ad073ca13eb2b1bdc00"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -174,7 +159,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>pinMode</b> (int pin,
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:a7b8c4a195c58f9eb8750e94955c5aa4b"><td class="memItemLeft" align="right" valign="top"><a id="a7b8c4a195c58f9eb8750e94955c5aa4b"></a>
-static <a class="el" href="classaudio__tools_1_1_hardware_serial.html">HardwareSerial</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Serial</b></td></tr>
+static HardwareSerial&#160;</td><td class="memItemRight" valign="bottom"><b>Serial</b></td></tr>
 <tr class="separator:a7b8c4a195c58f9eb8750e94955c5aa4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
