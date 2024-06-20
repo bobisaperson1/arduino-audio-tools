@@ -396,12 +396,12 @@ $(function() {
 <div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;    <a class="code" href="classaudio__tools_1_1_ring_buffer.html">RingBuffer&lt;T&gt;</a> *p_buffer = idx &lt; output_count ? buffers[idx] : <span class="keyword">nullptr</span>;</div>
 <div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;    assert(p_buffer != <span class="keyword">nullptr</span>);</div>
 <div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;    <span class="keywordtype">size_t</span> samples = bytes / <span class="keyword">sizeof</span>(T);</div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    <span class="keywordflow">if</span> (p_buffer-&gt;<a class="code" href="classaudio__tools_1_1_ring_buffer.html#a473a08fbb41a997860a55213bc367d44">availableForWrite</a>() &gt;= bytes) {</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    <span class="keywordflow">if</span> (p_buffer-&gt;<a class="code" href="classaudio__tools_1_1_ring_buffer.html#a473a08fbb41a997860a55213bc367d44">availableForWrite</a>() &gt;= samples) {</div>
 <div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;      result = p_buffer-&gt;<a class="code" href="classaudio__tools_1_1_base_buffer.html#a2b6c561aac2af64aafac1946b6e46393">writeArray</a>((T *)buffer_c, samples) * <span class="keyword">sizeof</span>(T);</div>
 <div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;    } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;      LOGW(<span class="stringliteral">&quot;Available Buffer %d too small %d: requested: %d -&gt; increase the &quot;</span></div>
 <div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;           <span class="stringliteral">&quot;buffer size&quot;</span>, idx,</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;           p_buffer-&gt;<a class="code" href="classaudio__tools_1_1_ring_buffer.html#a473a08fbb41a997860a55213bc367d44">availableForWrite</a>(), bytes);</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;           p_buffer-&gt;<a class="code" href="classaudio__tools_1_1_ring_buffer.html#a473a08fbb41a997860a55213bc367d44">availableForWrite</a>()*<span class="keyword">sizeof</span>(T), bytes);</div>
 <div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    }</div>
 <div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    <span class="keywordflow">return</span> result;</div>
 <div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;  }</div>
