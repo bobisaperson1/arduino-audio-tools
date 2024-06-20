@@ -170,7 +170,7 @@ $(function() {
 <div class="line"><a name="l00119"></a><span class="lineno"><a class="line" href="classaudio__tools_1_1_f_l_a_c_decoder.html#a68b01f6d74485da20c323b9c68d906fd">  119</a></span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classaudio__tools_1_1_f_l_a_c_decoder.html#a68b01f6d74485da20c323b9c68d906fd">copy</a>() {</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    LOGD(<span class="stringliteral">&quot;copy&quot;</span>);</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordflow">if</span> (!is_active) {</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;      LOGE(<span class="stringliteral">&quot;not active&quot;</span>);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;      LOGW(<span class="stringliteral">&quot;FLAC not active&quot;</span>);</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    }</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keywordflow">if</span> (p_input == <span class="keyword">nullptr</span>) {</div>
