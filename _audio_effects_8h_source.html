@@ -270,19 +270,19 @@ $(function() {
 <div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160; </div>
 <div class="line"><a name="l00262"></a><span class="lineno"><a class="line" href="classaudio__tools_1_1_audio_effect_stream_t.html#a5a28841c35da456c0ccccbe9623c00a1">  262</a></span>&#160;    <span class="keywordtype">size_t</span> <a class="code" href="classaudio__tools_1_1_audio_effect_stream_t.html#a5a28841c35da456c0ccccbe9623c00a1">readBytes</a>(uint8_t *buffer, <span class="keywordtype">size_t</span> length)<span class="keyword"> override </span>{</div>
 <div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        <span class="keywordflow">if</span> (!active || p_io==<span class="keyword">nullptr</span>)<span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;        <span class="keywordtype">int</span> frames = length / <span class="keyword">sizeof</span>(T) / info.<a class="code" href="structaudio__tools_1_1_audio_info.html#a1ac7822956f57069d76da865d6b33c55">channels</a>;</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;        <span class="keywordtype">size_t</span> result_size = 0;</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160; </div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;        if (p_io-&gt;available()&lt;(<span class="keyword">sizeof</span>(T)*info.<a class="code" href="structaudio__tools_1_1_audio_info.html#a1ac7822956f57069d76da865d6b33c55">channels</a>)){</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;            <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;        }</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;        <span class="keywordtype">size_t</span> result_size = 0;</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160; </div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;        <span class="comment">// read data from source</span></div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;        <span class="keywordtype">size_t</span> result = p_io-&gt;readBytes((uint8_t*)buffer, length);</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;        <span class="keywordtype">int</span> frames = result / <span class="keyword">sizeof</span>(T) / info.<a class="code" href="structaudio__tools_1_1_audio_info.html#a1ac7822956f57069d76da865d6b33c55">channels</a>;</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;        T* samples = (T*) buffer;</div>
 <div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160; </div>
 <div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> count=0;count&lt;frames;count++){</div>
 <div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;            <span class="comment">// determine sample by combining all channels in frame</span></div>
 <div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;            T result_sample = 0;</div>
 <div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> ch=0;ch&lt;info.<a class="code" href="structaudio__tools_1_1_audio_info.html#a1ac7822956f57069d76da865d6b33c55">channels</a>;ch++){</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                T sample;</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                p_io-&gt;readBytes((uint8_t*)&amp;sample, <span class="keyword">sizeof</span>(T));</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                T sample = *samples++;</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                <span class="comment">//p_io-&gt;readBytes((uint8_t*)&amp;sample, sizeof(T));</span></div>
 <div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;                result_sample += sample / info.<a class="code" href="structaudio__tools_1_1_audio_info.html#a1ac7822956f57069d76da865d6b33c55">channels</a>;</div>
 <div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;            }</div>
 <div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160; </div>
