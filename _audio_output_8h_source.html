@@ -475,13 +475,13 @@ $(function() {
 <div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160; </div>
 <div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;  <span class="keywordtype">size_t</span> writeSilence(<span class="keywordtype">size_t</span> bytes)  {</div>
 <div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;    <span class="keywordflow">if</span> (bytes == 0) <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;    <span class="keywordtype">byte</span> silence[bytes] = {0};</div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;    uint8_t silence[bytes] = {0};</div>
 <div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;    <span class="keywordflow">return</span> write(stream_idx, silence, bytes);</div>
 <div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;  }</div>
 <div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160; </div>
 <div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;  <span class="keywordtype">size_t</span> writeSilence(<span class="keywordtype">int</span> idx, <span class="keywordtype">size_t</span> bytes){</div>
 <div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;    <span class="keywordflow">if</span> (bytes == 0) <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;    <span class="keywordtype">byte</span> silence[bytes] = {0};</div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;    uint8_t silence[bytes] = {0};</div>
 <div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;    <span class="keywordflow">return</span> write(idx, silence, bytes);</div>
 <div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;  }</div>
 <div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160; </div>
