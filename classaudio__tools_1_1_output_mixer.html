@@ -106,6 +106,9 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class
 int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaudio__tools_1_1_output_mixer.html#ad19e788ef2c620faad7b476ad50d7fd8">availableForWrite</a> (int idx)</td></tr>
 <tr class="memdesc:ad19e788ef2c620faad7b476ad50d7fd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides the bytes available to write for the indicated stream index. <br /></td></tr>
 <tr class="separator:ad19e788ef2c620faad7b476ad50d7fd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42de37916ce6c72e6b4b79dbc9487b8c"><td class="memItemLeft" align="right" valign="top"><a id="a42de37916ce6c72e6b4b79dbc9487b8c"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>availableSamples</b> ()</td></tr>
+<tr class="separator:a42de37916ce6c72e6b4b79dbc9487b8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a837c24b86686e363ee3fb1428385c073"><td class="memItemLeft" align="right" valign="top"><a id="a837c24b86686e363ee3fb1428385c073"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaudio__tools_1_1_output_mixer.html#a837c24b86686e363ee3fb1428385c073">begin</a> (int copy_buffer_size_bytes=DEFAULT_BUFFER_SIZE, <a class="el" href="group__basic.html#ga462bfa9dfea81692463ecb192183dd01">MemoryType</a> memoryType=PS_RAM)</td></tr>
 <tr class="memdesc:a837c24b86686e363ee3fb1428385c073"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the processing. <br /></td></tr>
@@ -198,7 +201,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_auto_index</b> = t
 <a class="el" href="classaudio__tools_1_1_vector.html">Vector</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>output</b> {0}</td></tr>
 <tr class="separator:a5c6cc27499b81ddd560d4e1953cd8912"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac39709c45a8838291f9c76e8193617e1"><td class="memItemLeft" align="right" valign="top"><a id="ac39709c45a8838291f9c76e8193617e1"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>output_count</b></td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>output_count</b> = 0</td></tr>
 <tr class="separator:ac39709c45a8838291f9c76e8193617e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a99c350af45d350708934a697a219ec2c"><td class="memItemLeft" align="right" valign="top"><a id="a99c350af45d350708934a697a219ec2c"></a>
 <a class="el" href="classaudio__tools_1_1_print.html">Print</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>p_final_output</b> = nullptr</td></tr>
@@ -207,7 +210,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>output_count</b></td><
 void *&#160;</td><td class="memItemRight" valign="bottom"><b>p_memory</b> = nullptr</td></tr>
 <tr class="separator:ae0f3b6d8f47b1f0e8556873fe15f3297"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a17e28bed569f0834796f55dcc7de2ec0"><td class="memItemLeft" align="right" valign="top"><a id="a17e28bed569f0834796f55dcc7de2ec0"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>size_bytes</b></td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>size_bytes</b> = 0</td></tr>
 <tr class="separator:a17e28bed569f0834796f55dcc7de2ec0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a52f13ca22a70398277f1d30ef6fd207f"><td class="memItemLeft" align="right" valign="top"><a id="a52f13ca22a70398277f1d30ef6fd207f"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>stream_idx</b> = 0</td></tr>
