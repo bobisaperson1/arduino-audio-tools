@@ -78,5 +78,5 @@ var searchData=
   ['rtspsourcestream_1032',['RTSPSourceStream',['../classaudio__tools_1_1_r_t_s_p_source_stream.html',1,'RTSPSourceStream'],['../classaudio__tools_1_1_r_t_s_p_source_stream.html#a8af7ebd8c24fb7350027566a2939516e',1,'audio_tools::RTSPSourceStream::RTSPSourceStream(Stream &amp;stream, AudioInfo info)'],['../classaudio__tools_1_1_r_t_s_p_source_stream.html#ac810cf235be6c51599ce156eaffe037a',1,'audio_tools::RTSPSourceStream::RTSPSourceStream(Stream &amp;stream, RTSPFormat &amp;format)']]],
   ['rx_5ftx_5fmode_1033',['rx_tx_mode',['../classaudio__tools_1_1_i2_s_config_e_s_p32.html#a31a454d24fb1f4d74779a0ff668d54cc',1,'audio_tools::I2SConfigESP32::rx_tx_mode()'],['../classaudio__tools_1_1_i2_s_config_e_s_p32_v1.html#a31a454d24fb1f4d74779a0ff668d54cc',1,'audio_tools::I2SConfigESP32V1::rx_tx_mode()'],['../classaudio__tools_1_1_i2_s_config_std.html#a31a454d24fb1f4d74779a0ff668d54cc',1,'audio_tools::I2SConfigStd::rx_tx_mode()']]],
   ['rxtxmode_1034',['RxTxMode',['../group__basic.html#ga8cbd91a8bac9b5ab425112be1620eb49',1,'audio_tools']]],
-  ['rxtxmodenames_1035',['RxTxModeNames',['../namespaceaudio__tools.html#acaae0b7e00d518ef0cb903f6c65a20ce',1,'audio_tools']]]
+  ['rxtxmodenames_1035',['RxTxModeNames',['../namespaceaudio__tools.html#a488e5410a2317335bc89c65de90ab41b',1,'audio_tools']]]
 ];
