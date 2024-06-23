@@ -13,7 +13,7 @@ var searchData=
   ['ledoutputunor4config_1899',['LEDOutputUnoR4Config',['../structaudio__tools_1_1_l_e_d_output_uno_r4_config.html',1,'audio_tools']]],
   ['linearvolumecontrol_1900',['LinearVolumeControl',['../classaudio__tools_1_1_linear_volume_control.html',1,'audio_tools']]],
   ['list_1901',['List',['../classaudio__tools_1_1_list.html',1,'audio_tools']]],
-  ['list_3c_20audio_5ftools_3a_3adynamicmemorystream_3a_3adatanode_20_2a_20_3e_1902',['List&lt; audio_tools::DynamicMemoryStream::DataNode * &gt;',['../classaudio__tools_1_1_list.html',1,'audio_tools']]],
+  ['list_3c_20audio_5ftools_3a_3adatanode_20_2a_20_3e_1902',['List&lt; audio_tools::DataNode * &gt;',['../classaudio__tools_1_1_list.html',1,'audio_tools']]],
   ['list_3c_20audio_5ftools_3a_3ahttpheaderline_20_2a_20_3e_1903',['List&lt; audio_tools::HttpHeaderLine * &gt;',['../classaudio__tools_1_1_list.html',1,'audio_tools']]],
   ['list_3c_20string_20_3e_1904',['List&lt; String &gt;',['../classaudio__tools_1_1_list.html',1,'audio_tools']]],
   ['lock_1905',['Lock',['../classaudio__tools_1_1_lock.html',1,'audio_tools']]],

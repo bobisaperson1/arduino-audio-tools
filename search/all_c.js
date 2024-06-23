@@ -23,7 +23,7 @@ var searchData=
   ['limit_715',['limit',['../classaudio__tools_1_1_volume_control.html#ace0e1dc6943007f979f702e7b074b60e',1,'audio_tools::VolumeControl']]],
   ['linearvolumecontrol_716',['LinearVolumeControl',['../classaudio__tools_1_1_linear_volume_control.html',1,'audio_tools']]],
   ['list_717',['List',['../classaudio__tools_1_1_list.html',1,'List&lt; T &gt;'],['../classaudio__tools_1_1_list.html#a0c550a11ee3af45d1b60d03af0738ba9',1,'audio_tools::List::List(Allocator &amp;allocator=DefaultAllocator)'],['../classaudio__tools_1_1_list.html#acd79405491ac84e17f821734d0e74022',1,'audio_tools::List::List(List &amp;ref)=default'],['../classaudio__tools_1_1_list.html#adaac7ba81a77ef31f25f5cc9536e0aff',1,'audio_tools::List::List(const T(&amp;a)[N], Allocator &amp;allocator=DefaultAllocator)']]],
-  ['list_3c_20audio_5ftools_3a_3adynamicmemorystream_3a_3adatanode_20_2a_20_3e_718',['List&lt; audio_tools::DynamicMemoryStream::DataNode * &gt;',['../classaudio__tools_1_1_list.html',1,'audio_tools']]],
+  ['list_3c_20audio_5ftools_3a_3adatanode_20_2a_20_3e_718',['List&lt; audio_tools::DataNode * &gt;',['../classaudio__tools_1_1_list.html',1,'audio_tools']]],
   ['list_3c_20audio_5ftools_3a_3ahttpheaderline_20_2a_20_3e_719',['List&lt; audio_tools::HttpHeaderLine * &gt;',['../classaudio__tools_1_1_list.html',1,'audio_tools']]],
   ['list_3c_20string_20_3e_720',['List&lt; String &gt;',['../classaudio__tools_1_1_list.html',1,'audio_tools']]],
   ['listdir_721',['listDir',['../classaudio__tools_1_1_s_d_direct.html#aadba1a05a18816e212611289e860ad14',1,'audio_tools::SDDirect::listDir()'],['../classaudio__tools_1_1_s_d_index.html#a51580b39d56dcffff525b5110d18944e',1,'audio_tools::SDIndex::listDir()']]],

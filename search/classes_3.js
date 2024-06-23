@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['datanode_1734',['DataNode',['../structaudio__tools_1_1_dynamic_memory_stream_1_1_data_node.html',1,'audio_tools::DynamicMemoryStream']]],
+  ['datanode_1734',['DataNode',['../structaudio__tools_1_1_data_node.html',1,'audio_tools']]],
   ['debouncer_1735',['Debouncer',['../classaudio__tools_1_1_debouncer.html',1,'audio_tools']]],
   ['decimate_1736',['Decimate',['../classaudio__tools_1_1_decimate.html',1,'audio_tools']]],
   ['decimatet_1737',['DecimateT',['../classaudio__tools_1_1_decimate_t.html',1,'audio_tools']]],
