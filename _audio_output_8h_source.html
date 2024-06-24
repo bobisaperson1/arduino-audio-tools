@@ -89,7 +89,7 @@ $(function() {
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <span class="keyword">virtual</span> ~<a class="code" href="classaudio__tools_1_1_audio_output.html">AudioOutput</a>() = <span class="keywordflow">default</span>;</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">size_t</span> write(<span class="keyword">const</span> uint8_t *buffer, <span class="keywordtype">size_t</span> size) <span class="keyword">override</span> = 0;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">size_t</span> write(<span class="keyword">const</span> uint8_t *data, <span class="keywordtype">size_t</span> len) <span class="keyword">override</span> = 0;</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">size_t</span> write(uint8_t ch)<span class="keyword"> override </span>{</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordflow">if</span> (tmp.<a class="code" href="classaudio__tools_1_1_single_buffer.html#a91336dd99913834c918d58f4223d7ac4">isFull</a>()) {</div>
@@ -380,8 +380,8 @@ $(function() {
 <div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160; </div>
 <div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;  <span class="keywordtype">size_t</span> write(uint8_t)<span class="keyword"> override </span>{ <span class="keywordflow">return</span> 0; }</div>
 <div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160; </div>
-<div class="line"><a name="l00367"></a><span class="lineno"><a class="line" href="classaudio__tools_1_1_output_mixer.html#a91c8fc5c52681e7c3fae7f0fa4c8b3ed">  367</a></span>&#160;  <span class="keywordtype">size_t</span> <a class="code" href="classaudio__tools_1_1_output_mixer.html#a91c8fc5c52681e7c3fae7f0fa4c8b3ed">write</a>(<span class="keyword">const</span> uint8_t *buffer_c, <span class="keywordtype">size_t</span> bytes)<span class="keyword"> override </span>{</div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;    <span class="keywordtype">size_t</span> result = write(stream_idx, buffer_c, bytes);</div>
+<div class="line"><a name="l00367"></a><span class="lineno"><a class="line" href="classaudio__tools_1_1_output_mixer.html#a7597ef706dd1aa590903ce9e095db20a">  367</a></span>&#160;  <span class="keywordtype">size_t</span> <a class="code" href="classaudio__tools_1_1_output_mixer.html#a7597ef706dd1aa590903ce9e095db20a">write</a>(<span class="keyword">const</span> uint8_t *data, <span class="keywordtype">size_t</span> len)<span class="keyword"> override </span>{</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;    <span class="keywordtype">size_t</span> result = write(stream_idx, data, len);</div>
 <div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;    <span class="comment">// after writing the last stream we flush</span></div>
 <div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;    <span class="keywordflow">if</span> (is_auto_index) {</div>
 <div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;      stream_idx++;</div>
@@ -569,23 +569,23 @@ $(function() {
 <div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;    }</div>
 <div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;  }</div>
 <div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160; </div>
-<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;  <span class="keywordtype">size_t</span> write(<span class="keyword">const</span> uint8_t *buffer, <span class="keywordtype">size_t</span> size) {</div>
+<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;  <span class="keywordtype">size_t</span> write(<span class="keyword">const</span> uint8_t *data, <span class="keywordtype">size_t</span> len) {</div>
 <div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;    <a class="code" href="classaudio__tools_1_1_volume_output.html#ac8bb3912a3ce86b15842e79d0b421204">clear</a>();</div>
 <div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;    <span class="keywordflow">switch</span> (info.<a class="code" href="structaudio__tools_1_1_audio_info.html#aa65c89fa8336bfdc4f8d916d9d415a9f">bits_per_sample</a>) {</div>
 <div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;    <span class="keywordflow">case</span> 16:</div>
-<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;      updateVolumes&lt;int16_t&gt;(buffer, size);</div>
+<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;      updateVolumes&lt;int16_t&gt;(data, len);</div>
 <div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;      <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;    <span class="keywordflow">case</span> 24:</div>
-<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;      updateVolumes&lt;int24_t&gt;(buffer, size);</div>
+<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;      updateVolumes&lt;int24_t&gt;(data, len);</div>
 <div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;      <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;    <span class="keywordflow">case</span> 32:</div>
-<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;      updateVolumes&lt;int32_t&gt;(buffer, size);</div>
+<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;      updateVolumes&lt;int32_t&gt;(data, len);</div>
 <div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;      <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;    <span class="keywordflow">default</span>:</div>
 <div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;      LOGE(<span class="stringliteral">&quot;Unsupported bits_per_sample: %d&quot;</span>, info.<a class="code" href="structaudio__tools_1_1_audio_info.html#aa65c89fa8336bfdc4f8d916d9d415a9f">bits_per_sample</a>);</div>
 <div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;      <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;    }</div>
-<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;    <span class="keywordflow">return</span> size;</div>
+<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;    <span class="keywordflow">return</span> len;</div>
 <div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;  }</div>
 <div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160; </div>
 <div class="line"><a name="l00593"></a><span class="lineno"><a class="line" href="classaudio__tools_1_1_volume_output.html#a1d59a107c6918cdc9a17b92f6cd4e136">  593</a></span>&#160;  <span class="keywordtype">float</span> <a class="code" href="classaudio__tools_1_1_volume_output.html#a1d59a107c6918cdc9a17b92f6cd4e136">volume</a>() { <span class="keywordflow">return</span> f_volume; }</div>
@@ -668,11 +668,11 @@ $(function() {
 <div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160;  }</div>
 <div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160; </div>
-<div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160;  <span class="keywordtype">size_t</span> write(<span class="keyword">const</span> uint8_t *buffer, <span class="keywordtype">size_t</span> len)<span class="keyword"> override </span>{</div>
+<div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160;  <span class="keywordtype">size_t</span> write(<span class="keyword">const</span> uint8_t *data, <span class="keywordtype">size_t</span> len)<span class="keyword"> override </span>{</div>
 <div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160;    <span class="keywordflow">if</span> (p_next == <span class="keyword">nullptr</span>)</div>
 <div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160;      <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;    <span class="keywordflow">if</span> (pos + len &lt;= max_size) {</div>
-<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;      memcpy(p_next, buffer, len);</div>
+<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;      memcpy(p_next, data, len);</div>
 <div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160;      pos += len;</div>
 <div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;      p_next += len;</div>
 <div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;      <span class="keywordflow">return</span> len;</div>
@@ -709,14 +709,14 @@ $(function() {
 <div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;    out_channels.push_back(def);</div>
 <div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;  }</div>
 <div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160; </div>
-<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;  <span class="keywordtype">size_t</span> write(<span class="keyword">const</span> uint8_t *buffer, <span class="keywordtype">size_t</span> size)<span class="keyword"> override </span>{</div>
+<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;  <span class="keywordtype">size_t</span> write(<span class="keyword">const</span> uint8_t *data, <span class="keywordtype">size_t</span> len)<span class="keyword"> override </span>{</div>
 <div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;    <span class="keywordflow">switch</span>(cfg.<a class="code" href="structaudio__tools_1_1_audio_info.html#aa65c89fa8336bfdc4f8d916d9d415a9f">bits_per_sample</a>){</div>
 <div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;      <span class="keywordflow">case</span> 16:</div>
-<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;        <span class="keywordflow">return</span> writeT&lt;int16_t&gt;(buffer, size);</div>
+<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;        <span class="keywordflow">return</span> writeT&lt;int16_t&gt;(data, len);</div>
 <div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;      <span class="keywordflow">case</span> 24:</div>
-<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;        <span class="keywordflow">return</span> writeT&lt;int24_t&gt;(buffer, size);</div>
+<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;        <span class="keywordflow">return</span> writeT&lt;int24_t&gt;(data, len);</div>
 <div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;      <span class="keywordflow">case</span> 32:</div>
-<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;        <span class="keywordflow">return</span> writeT&lt;int32_t&gt;(buffer, size);</div>
+<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;        <span class="keywordflow">return</span> writeT&lt;int32_t&gt;(data, len);</div>
 <div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;      <span class="keywordflow">default</span>:</div>
 <div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;        <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;    }</div>
@@ -787,10 +787,10 @@ $(function() {
 <div class="ttc" id="aclassaudio__tools_1_1_output_mixer_html_a041249f802c5bf4c2deae666610e03c4"><div class="ttname"><a href="classaudio__tools_1_1_output_mixer.html#a041249f802c5bf4c2deae666610e03c4">audio_tools::OutputMixer::next</a></div><div class="ttdeci">void next()</div><div class="ttdoc">Moves to the next mixing index.</div><div class="ttdef"><b>Definition:</b> AudioOutput.h:489</div></div>
 <div class="ttc" id="aclassaudio__tools_1_1_output_mixer_html_a147f94e11ad86e7c885ca8ece6937444"><div class="ttname"><a href="classaudio__tools_1_1_output_mixer.html#a147f94e11ad86e7c885ca8ece6937444">audio_tools::OutputMixer::setIndex</a></div><div class="ttdeci">void setIndex(int idx)</div><div class="ttdoc">Sets the Output Stream index.</div><div class="ttdef"><b>Definition:</b> AudioOutput.h:484</div></div>
 <div class="ttc" id="aclassaudio__tools_1_1_output_mixer_html_a69fce743755f71ed4b89417b0a8f3408"><div class="ttname"><a href="classaudio__tools_1_1_output_mixer.html#a69fce743755f71ed4b89417b0a8f3408">audio_tools::OutputMixer::write</a></div><div class="ttdeci">size_t write(int idx, const uint8_t *buffer_c, size_t bytes)</div><div class="ttdoc">Write the data for an individual stream idx which will be mixed together.</div><div class="ttdef"><b>Definition:</b> AudioOutput.h:380</div></div>
+<div class="ttc" id="aclassaudio__tools_1_1_output_mixer_html_a7597ef706dd1aa590903ce9e095db20a"><div class="ttname"><a href="classaudio__tools_1_1_output_mixer.html#a7597ef706dd1aa590903ce9e095db20a">audio_tools::OutputMixer::write</a></div><div class="ttdeci">size_t write(const uint8_t *data, size_t len) override</div><div class="ttdef"><b>Definition:</b> AudioOutput.h:367</div></div>
 <div class="ttc" id="aclassaudio__tools_1_1_output_mixer_html_a76d6419a0cdd4959344f821171a2e9ec"><div class="ttname"><a href="classaudio__tools_1_1_output_mixer.html#a76d6419a0cdd4959344f821171a2e9ec">audio_tools::OutputMixer::available</a></div><div class="ttdeci">int available(int idx)</div><div class="ttdoc">Provides the available bytes in the buffer.</div><div class="ttdef"><b>Definition:</b> AudioOutput.h:410</div></div>
 <div class="ttc" id="aclassaudio__tools_1_1_output_mixer_html_a837c24b86686e363ee3fb1428385c073"><div class="ttname"><a href="classaudio__tools_1_1_output_mixer.html#a837c24b86686e363ee3fb1428385c073">audio_tools::OutputMixer::begin</a></div><div class="ttdeci">bool begin(int copy_buffer_size_bytes=DEFAULT_BUFFER_SIZE, MemoryType memoryType=PS_RAM)</div><div class="ttdoc">Starts the processing.</div><div class="ttdef"><b>Definition:</b> AudioOutput.h:342</div></div>
 <div class="ttc" id="aclassaudio__tools_1_1_output_mixer_html_a87b51853b7bf1bc90d9efa9f3b8d4fea"><div class="ttname"><a href="classaudio__tools_1_1_output_mixer.html#a87b51853b7bf1bc90d9efa9f3b8d4fea">audio_tools::OutputMixer::availableForWrite</a></div><div class="ttdeci">int availableForWrite() override</div><div class="ttdoc">Provides the bytes available to write for the current stream buffer.</div><div class="ttdef"><b>Definition:</b> AudioOutput.h:397</div></div>
-<div class="ttc" id="aclassaudio__tools_1_1_output_mixer_html_a91c8fc5c52681e7c3fae7f0fa4c8b3ed"><div class="ttname"><a href="classaudio__tools_1_1_output_mixer.html#a91c8fc5c52681e7c3fae7f0fa4c8b3ed">audio_tools::OutputMixer::write</a></div><div class="ttdeci">size_t write(const uint8_t *buffer_c, size_t bytes) override</div><div class="ttdef"><b>Definition:</b> AudioOutput.h:367</div></div>
 <div class="ttc" id="aclassaudio__tools_1_1_output_mixer_html_aa2299c86cec1b36ea50195df313dc05e"><div class="ttname"><a href="classaudio__tools_1_1_output_mixer.html#aa2299c86cec1b36ea50195df313dc05e">audio_tools::OutputMixer::flushMixer</a></div><div class="ttdeci">void flushMixer()</div><div class="ttdoc">Force output to final destination.</div><div class="ttdef"><b>Definition:</b> AudioOutput.h:418</div></div>
 <div class="ttc" id="aclassaudio__tools_1_1_output_mixer_html_aaf81d3fdaf258088d7692fa70cece087"><div class="ttname"><a href="classaudio__tools_1_1_output_mixer.html#aaf81d3fdaf258088d7692fa70cece087">audio_tools::OutputMixer::end</a></div><div class="ttdeci">void end()</div><div class="ttdoc">Remove all input streams.</div><div class="ttdef"><b>Definition:</b> AudioOutput.h:353</div></div>
 <div class="ttc" id="aclassaudio__tools_1_1_output_mixer_html_abb80a48eb1817f480e52497f42b5d4e5"><div class="ttname"><a href="classaudio__tools_1_1_output_mixer.html#abb80a48eb1817f480e52497f42b5d4e5">audio_tools::OutputMixer::setWeight</a></div><div class="ttdeci">void setWeight(int channel, float weight)</div><div class="ttdef"><b>Definition:</b> AudioOutput.h:332</div></div>

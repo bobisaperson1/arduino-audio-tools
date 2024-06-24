@@ -105,22 +105,22 @@ $(function() {
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="keyword">operator</span> bool() { <span class="keywordflow">return</span> ctx != <span class="keyword">nullptr</span>; }</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">size_t</span> write(<span class="keyword">const</span> <span class="keywordtype">void</span> *input_buffer, <span class="keywordtype">size_t</span> length) {</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    LOGI(<span class="stringliteral">&quot;write: %d&quot;</span>, length);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">size_t</span> write(<span class="keyword">const</span> uint8_t *data, <span class="keywordtype">size_t</span> len) {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    LOGI(<span class="stringliteral">&quot;write: %d&quot;</span>, len);</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">bool</span> is_ok = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">size_t</span> dropped;</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">int</span> synced;</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">if</span> (is_first_write) {</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;      is_first_write = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;      <span class="keywordflow">if</span> (!<a class="code" href="classaudio__tools_1_1_a_p_t_x_decoder.html#aa1d0071fc1874ec9e73acd7531392da1">checkPrefix</a>(input_buffer, length)) {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;      <span class="keywordflow">if</span> (!<a class="code" href="classaudio__tools_1_1_a_p_t_x_decoder.html#aa1d0071fc1874ec9e73acd7531392da1">checkPrefix</a>(data, len)) {</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;      }</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    }</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    output_buffer.resize(length * 10);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    output_buffer.resize(len * 10);</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    memset(output_buffer.data(), 0, output_buffer.size());</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    processed = aptx_decode_sync(ctx, (<span class="keyword">const</span> uint8_t *)input_buffer, length,</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    processed = aptx_decode_sync(ctx, (<span class="keyword">const</span> uint8_t *)data, len,</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                                 output_buffer.data(), output_buffer.size(),</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                                 &amp;written, &amp;synced, &amp;dropped);</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
@@ -128,14 +128,14 @@ $(function() {
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="comment">// If we have not decoded all supplied samples then decoding unrecoverable</span></div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="comment">// failed</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordflow">if</span> (processed != length) {</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      LOGE(<span class="stringliteral">&quot;aptX decoding reqested: %d eff: %d&quot;</span>, length, processed);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordflow">if</span> (processed != len) {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      LOGE(<span class="stringliteral">&quot;aptX decoding reqested: %d eff: %d&quot;</span>, len, processed);</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;      is_ok = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    }</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <a class="code" href="classaudio__tools_1_1_a_p_t_x_decoder.html#afcfdf8cac8adf3cecd498347d2fbcc61">writeData</a>(written, is_ok);</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordflow">return</span> is_ok ? length : 0;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordflow">return</span> is_ok ? len : 0;</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  }</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; <span class="keyword">protected</span>:</div>
@@ -287,14 +287,14 @@ $(function() {
 <div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160; </div>
 <div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;  <span class="keyword">operator</span> bool() { <span class="keywordflow">return</span> ctx != <span class="keyword">nullptr</span>; }</div>
 <div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160; </div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">size_t</span> write(<span class="keyword">const</span> <span class="keywordtype">void</span> *in_ptr, <span class="keywordtype">size_t</span> in_size) {</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    LOGI(<span class="stringliteral">&quot;write: %d&quot;</span>, in_size);</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">size_t</span> write(<span class="keyword">const</span> uint8_t *data, <span class="keywordtype">size_t</span> len) {</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    LOGI(<span class="stringliteral">&quot;write: %d&quot;</span>, len);</div>
 <div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    <span class="keywordflow">if</span> (ctx == <span class="keyword">nullptr</span>) <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    <span class="keywordtype">size_t</span> output_written = 0;</div>
 <div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160; </div>
 <div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    <span class="comment">// process all bytes</span></div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    int16_t *in_ptr16 = (int16_t *)in_ptr;</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    <span class="keywordtype">int</span> in_samples = in_size / 2;</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    int16_t *in_ptr16 = (int16_t *)data;</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    <span class="keywordtype">int</span> in_samples = len / 2;</div>
 <div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; in_samples; j++) {</div>
 <div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;      input_buffer[input_pos++].setAndScale16(in_ptr16[j]);</div>
 <div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160; </div>
@@ -327,7 +327,7 @@ $(function() {
 <div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;      }</div>
 <div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;    }</div>
 <div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160; </div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    <span class="keywordflow">return</span> in_size;</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    <span class="keywordflow">return</span> len;</div>
 <div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;  }</div>
 <div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160; </div>
 <div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160; <span class="keyword">protected</span>:</div>

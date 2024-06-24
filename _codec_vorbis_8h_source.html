@@ -206,9 +206,9 @@ $(function() {
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    <span class="keywordflow">return</span> result;</div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;  }</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160; </div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">size_t</span> readBytes(uint8_t *ptr, <span class="keywordtype">size_t</span> size)<span class="keyword"> override </span>{</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    <span class="keywordtype">size_t</span> read_size =  min(size,(<span class="keywordtype">size_t</span>)VARBIS_MAX_READ_SIZE);</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <span class="keywordtype">size_t</span> result = p_input-&gt;readBytes((uint8_t *)ptr, read_size);</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">size_t</span> readBytes(uint8_t *data, <span class="keywordtype">size_t</span> len)<span class="keyword"> override </span>{</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    <span class="keywordtype">size_t</span> read_size =  min(len,(<span class="keywordtype">size_t</span>)VARBIS_MAX_READ_SIZE);</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <span class="keywordtype">size_t</span> result = p_input-&gt;readBytes((uint8_t *)data, read_size);</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    LOGD(<span class="stringliteral">&quot;readBytes: %zu&quot;</span>,result);</div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <span class="keywordflow">return</span> result;</div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;  }</div>

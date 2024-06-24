@@ -143,13 +143,13 @@ $(function() {
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  <span class="keyword">operator</span> bool() { <span class="keywordflow">return</span> active; }</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">size_t</span> write(<span class="keyword">const</span> <span class="keywordtype">void</span> *input, <span class="keywordtype">size_t</span> length) {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">size_t</span> write(<span class="keyword">const</span> uint8_t *data, <span class="keywordtype">size_t</span> len) {</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordflow">if</span> (!active) <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    LOGD(<span class="stringliteral">&quot;write %u&quot;</span>, length);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    LOGD(<span class="stringliteral">&quot;write %u&quot;</span>, len);</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    uint8_t *p_ptr8 = (uint8_t *)input;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    uint8_t *p_ptr8 = (uint8_t *)data;</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; length; j++) {</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; len; j++) {</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;      input_buffer[input_pos++] = p_ptr8[j];</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;      <span class="keywordflow">if</span> (input_pos &gt;= input_buffer.size()) {</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="keywordflow">if</span> (lc3_decode(lc3_decoder, input_buffer.data(), input_buffer.size(),</div>
@@ -167,7 +167,7 @@ $(function() {
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        input_pos = 0;</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;      }</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    }</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordflow">return</span> length;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordflow">return</span> len;</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  }</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; <span class="keyword">protected</span>:</div>
@@ -282,12 +282,12 @@ $(function() {
 <div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160; </div>
 <div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;  <span class="keyword">operator</span> bool() { <span class="keywordflow">return</span> lc3_encoder != <span class="keyword">nullptr</span>; }</div>
 <div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160; </div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">size_t</span> write(<span class="keyword">const</span> <span class="keywordtype">void</span> *in_ptr, <span class="keywordtype">size_t</span> in_size) {</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">size_t</span> write(<span class="keyword">const</span> uint8_t *data, <span class="keywordtype">size_t</span> len) {</div>
 <div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    <span class="keywordflow">if</span> (!active) <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    LOGD(<span class="stringliteral">&quot;write %u&quot;</span>, in_size);</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    uint8_t *p_ptr8 = (uint8_t *)in_ptr;</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    LOGD(<span class="stringliteral">&quot;write %u&quot;</span>, len);</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    uint8_t *p_ptr8 = (uint8_t *)data;</div>
 <div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160; </div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; in_size; j++) {</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; len; j++) {</div>
 <div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;      input_buffer[input_pos++] = p_ptr8[j];</div>
 <div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;      <span class="keywordflow">if</span> (input_pos &gt;= num_frames * 2) {</div>
 <div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;        <span class="keywordflow">if</span> (lc3_encode(lc3_encoder, pcm_format,</div>
@@ -305,7 +305,7 @@ $(function() {
 <div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;        input_pos = 0;</div>
 <div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;      }</div>
 <div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    }</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    <span class="keywordflow">return</span> in_size;</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    <span class="keywordflow">return</span> len;</div>
 <div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;  }</div>
 <div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160; </div>
 <div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160; <span class="keyword">protected</span>:</div>

@@ -71,7 +71,7 @@ $(function() {
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;AudioConfig.h&quot;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#if defined(USE_ANALOG) </span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//#if defined(USE_ANALOG) </span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#ifndef PIN_ANALOG_START</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#  define PIN_ANALOG_START 1</span></div>
@@ -119,7 +119,7 @@ $(function() {
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;} <span class="comment">// ns</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#</span><span class="comment">//endif</span></div>
 <div class="ttc" id="aclassaudio__tools_1_1_analog_config_std_html"><div class="ttname"><a href="classaudio__tools_1_1_analog_config_std.html">audio_tools::AnalogConfigStd</a></div><div class="ttdoc">Generic ADC and DAC configuration.</div><div class="ttdef"><b>Definition:</b> AnalogConfigStd.h:27</div></div>
 <div class="ttc" id="aclassaudio__tools_1_1_analog_config_std_html_a3f8c35d87f8bbda58b32c8860a9e08ea"><div class="ttname"><a href="classaudio__tools_1_1_analog_config_std.html#a3f8c35d87f8bbda58b32c8860a9e08ea">audio_tools::AnalogConfigStd::AnalogConfigStd</a></div><div class="ttdeci">AnalogConfigStd(const AnalogConfigStd &amp;cfg)=default</div><div class="ttdoc">Copy constructor.</div></div>
 <div class="ttc" id="aclassaudio__tools_1_1_analog_config_std_html_aaa74bd9b3f418d0c1df6d9b5b005941a"><div class="ttname"><a href="classaudio__tools_1_1_analog_config_std.html#aaa74bd9b3f418d0c1df6d9b5b005941a">audio_tools::AnalogConfigStd::AnalogConfigStd</a></div><div class="ttdeci">AnalogConfigStd(RxTxMode rxtxMode)</div><div class="ttdoc">Default constructor.</div><div class="ttdef"><b>Definition:</b> AnalogConfigStd.h:47</div></div>

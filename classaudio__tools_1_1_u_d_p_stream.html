@@ -131,10 +131,10 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>flush</b> () 
 <tr class="memitem:a9b3baad8c612d81b96e46f84d7e97580"><td class="memItemLeft" align="right" valign="top"><a id="a9b3baad8c612d81b96e46f84d7e97580"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>operator bool</b> ()</td></tr>
 <tr class="separator:a9b3baad8c612d81b96e46f84d7e97580"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a28841c35da456c0ccccbe9623c00a1"><td class="memItemLeft" align="right" valign="top"><a id="a5a28841c35da456c0ccccbe9623c00a1"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaudio__tools_1_1_u_d_p_stream.html#a5a28841c35da456c0ccccbe9623c00a1">readBytes</a> (uint8_t *buffer, size_t length) override</td></tr>
-<tr class="memdesc:a5a28841c35da456c0ccccbe9623c00a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads bytes using WiFi::readBytes. <br /></td></tr>
-<tr class="separator:a5a28841c35da456c0ccccbe9623c00a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c5c6275ddee80eb02839356b6185c0b"><td class="memItemLeft" align="right" valign="top"><a id="a4c5c6275ddee80eb02839356b6185c0b"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaudio__tools_1_1_u_d_p_stream.html#a4c5c6275ddee80eb02839356b6185c0b">readBytes</a> (uint8_t *data, size_t len) override</td></tr>
+<tr class="memdesc:a4c5c6275ddee80eb02839356b6185c0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads bytes using WiFi::readBytes. <br /></td></tr>
+<tr class="separator:a4c5c6275ddee80eb02839356b6185c0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0b594a1cd1d82b86c2dc7d66478e5508"><td class="memItemLeft" align="right" valign="top"><a id="a0b594a1cd1d82b86c2dc7d66478e5508"></a>
 IPAddress&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaudio__tools_1_1_u_d_p_stream.html#a0b594a1cd1d82b86c2dc7d66478e5508">remoteIP</a> ()</td></tr>
 <tr class="memdesc:a0b594a1cd1d82b86c2dc7d66478e5508"><td class="mdescLeft">&#160;</td><td class="mdescRight">We use the same remote ip as defined in begin for write. <br /></td></tr>
@@ -152,10 +152,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>setSSID</b> (const ch
 <tr class="memitem:a974489486c09b26b5cb2ab5117173863"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaudio__tools_1_1_u_d_p_stream.html#a974489486c09b26b5cb2ab5117173863">setUDP</a> (UDP &amp;udp)</td></tr>
 <tr class="memdesc:a974489486c09b26b5cb2ab5117173863"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines an alternative UDP object. By default we use WiFiUDP.  <a href="classaudio__tools_1_1_u_d_p_stream.html#a974489486c09b26b5cb2ab5117173863">More...</a><br /></td></tr>
 <tr class="separator:a974489486c09b26b5cb2ab5117173863"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a183cb7a3c6dce3202f9a4c205bd09e11"><td class="memItemLeft" align="right" valign="top"><a id="a183cb7a3c6dce3202f9a4c205bd09e11"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaudio__tools_1_1_u_d_p_stream.html#a183cb7a3c6dce3202f9a4c205bd09e11">write</a> (const uint8_t *buffer, size_t size) override</td></tr>
-<tr class="memdesc:a183cb7a3c6dce3202f9a4c205bd09e11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Replys will be sent to the initial remote caller. <br /></td></tr>
-<tr class="separator:a183cb7a3c6dce3202f9a4c205bd09e11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7597ef706dd1aa590903ce9e095db20a"><td class="memItemLeft" align="right" valign="top"><a id="a7597ef706dd1aa590903ce9e095db20a"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaudio__tools_1_1_u_d_p_stream.html#a7597ef706dd1aa590903ce9e095db20a">write</a> (const uint8_t *data, size_t len) override</td></tr>
+<tr class="memdesc:a7597ef706dd1aa590903ce9e095db20a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Replys will be sent to the initial remote caller. <br /></td></tr>
+<tr class="separator:a7597ef706dd1aa590903ce9e095db20a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adffba128cba62b029746648f6946945c"><td class="memItemLeft" align="right" valign="top"><a id="adffba128cba62b029746648f6946945c"></a>
 virtual size_t&#160;</td><td class="memItemRight" valign="bottom"><b>write</b> (uint8_t ch) override</td></tr>
 <tr class="separator:adffba128cba62b029746648f6946945c"><td class="memSeparator" colspan="2">&#160;</td></tr>

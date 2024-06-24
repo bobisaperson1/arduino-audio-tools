@@ -207,8 +207,8 @@ $(function() {
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    LOGE(FLAC__StreamDecoderErrorStatusString[status]);</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;  }</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;  <span class="keywordtype">size_t</span> readBytes(uint8_t *buffer, <span class="keywordtype">size_t</span> len)<span class="keyword"> override </span>{</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;      <span class="keywordflow">return</span> p_input-&gt;readBytes(buffer, len);</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;  <span class="keywordtype">size_t</span> readBytes(uint8_t *data, <span class="keywordtype">size_t</span> len)<span class="keyword"> override </span>{</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;      <span class="keywordflow">return</span> p_input-&gt;readBytes(data, len);</div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;  }</div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
 <div class="line"><a name="l00167"></a><span class="lineno"><a class="line" href="classaudio__tools_1_1_f_l_a_c_decoder.html#a68911cf564f74f1ced8081a3ad465438">  167</a></span>&#160;  <span class="keyword">static</span> FLAC__StreamDecoderReadStatus <a class="code" href="classaudio__tools_1_1_f_l_a_c_decoder.html#a68911cf564f74f1ced8081a3ad465438">read_callback</a>(<span class="keyword">const</span> FLAC__StreamDecoder *decoder, FLAC__byte result_buffer[],<span class="keywordtype">size_t</span> *bytes, <span class="keywordtype">void</span> *client_data) {</div>
@@ -390,26 +390,26 @@ $(function() {
 <div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;    }</div>
 <div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;  }</div>
 <div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160; </div>
-<div class="line"><a name="l00364"></a><span class="lineno"><a class="line" href="classaudio__tools_1_1_f_l_a_c_encoder.html#a1b29912258e11751cfa24707a4e328ca">  364</a></span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">size_t</span> <a class="code" href="classaudio__tools_1_1_f_l_a_c_encoder.html#a1b29912258e11751cfa24707a4e328ca">write</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> *in_ptr, <span class="keywordtype">size_t</span> in_size)<span class="keyword"> override </span>{</div>
+<div class="line"><a name="l00364"></a><span class="lineno"><a class="line" href="classaudio__tools_1_1_f_l_a_c_encoder.html#a016bb39af201e717c1975551b7ecc1b3">  364</a></span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">size_t</span> <a class="code" href="classaudio__tools_1_1_f_l_a_c_encoder.html#a016bb39af201e717c1975551b7ecc1b3">write</a>(<span class="keyword">const</span> uint8_t *data, <span class="keywordtype">size_t</span> len)<span class="keyword"> override </span>{</div>
 <div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;    <span class="keywordflow">if</span> (!is_open || p_print == <span class="keyword">nullptr</span>) <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;    LOGD(<span class="stringliteral">&quot;write: %zu&quot;</span>, in_size);</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;    LOGD(<span class="stringliteral">&quot;write: %zu&quot;</span>, len);</div>
 <div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;    <span class="keywordtype">size_t</span> result = 0;</div>
 <div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;    <span class="keywordtype">int</span> samples=0;</div>
 <div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;    <span class="keywordtype">int</span> frames=0;</div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;    int32_t *data=<span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;    int32_t *data32=<span class="keyword">nullptr</span>;</div>
 <div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;    <span class="keywordflow">switch</span>(cfg.<a class="code" href="structaudio__tools_1_1_audio_info.html#aa65c89fa8336bfdc4f8d916d9d415a9f">bits_per_sample</a>){</div>
 <div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;      <span class="keywordflow">case</span> 16:</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;        samples = in_size / <span class="keyword">sizeof</span>(int16_t); </div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;        samples = len / <span class="keyword">sizeof</span>(int16_t); </div>
 <div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;        frames = samples / cfg.<a class="code" href="structaudio__tools_1_1_audio_info.html#a1ac7822956f57069d76da865d6b33c55">channels</a>;</div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;        writeBuffer((int16_t*)in_ptr, samples);</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;        data = buffer.data();</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;        writeBuffer((int16_t*)data, samples);</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;        data32 = buffer.data();</div>
 <div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;        <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160; </div>
 <div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;      <span class="keywordflow">case</span> 24:</div>
 <div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;      <span class="keywordflow">case</span> 32:</div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;        samples = in_size / <span class="keyword">sizeof</span>(int32_t);</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;        samples = len / <span class="keyword">sizeof</span>(int32_t);</div>
 <div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;        frames = samples / cfg.<a class="code" href="structaudio__tools_1_1_audio_info.html#a1ac7822956f57069d76da865d6b33c55">channels</a>;</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;        data = (int32_t*) in_ptr;</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;        data32 = (int32_t*) data;</div>
 <div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;        <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160; </div>
 <div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;      <span class="keywordflow">default</span>:</div>
@@ -418,8 +418,8 @@ $(function() {
 <div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;    }</div>
 <div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160; </div>
 <div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    <span class="keywordflow">if</span> (frames&gt;0){</div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;      <span class="keywordflow">if</span> (FLAC__stream_encoder_process_interleaved(p_encoder, data, frames)){</div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;        result = in_size;</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;      <span class="keywordflow">if</span> (FLAC__stream_encoder_process_interleaved(p_encoder, data32, frames)){</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;        result = len;</div>
 <div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;      } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;        LOGE(<span class="stringliteral">&quot;FLAC__stream_encoder_process_interleaved&quot;</span>);</div>
 <div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;      }</div>
@@ -480,8 +480,8 @@ $(function() {
 <div class="ttc" id="aclassaudio__tools_1_1_f_l_a_c_decoder_html_af7b59a67bef2242022fba71a88bdc35a"><div class="ttname"><a href="classaudio__tools_1_1_f_l_a_c_decoder.html#af7b59a67bef2242022fba71a88bdc35a">audio_tools::FLACDecoder::FLACDecoder</a></div><div class="ttdeci">FLACDecoder(bool isOgg=false)</div><div class="ttdoc">Default Constructor.</div><div class="ttdef"><b>Definition:</b> CodecFLAC.h:39</div></div>
 <div class="ttc" id="aclassaudio__tools_1_1_f_l_a_c_decoder_html_aff0707980f7e5ac68e0afd000a3b8d9a"><div class="ttname"><a href="classaudio__tools_1_1_f_l_a_c_decoder.html#aff0707980f7e5ac68e0afd000a3b8d9a">audio_tools::FLACDecoder::isInputFromStream</a></div><div class="ttdeci">bool isInputFromStream()</div><div class="ttdoc">Check if input is directly from stream - instead of writes.</div><div class="ttdef"><b>Definition:</b> CodecFLAC.h:153</div></div>
 <div class="ttc" id="aclassaudio__tools_1_1_f_l_a_c_encoder_html"><div class="ttname"><a href="classaudio__tools_1_1_f_l_a_c_encoder.html">audio_tools::FLACEncoder</a></div><div class="ttdoc">FLACEncoder.</div><div class="ttdef"><b>Definition:</b> CodecFLAC.h:270</div></div>
+<div class="ttc" id="aclassaudio__tools_1_1_f_l_a_c_encoder_html_a016bb39af201e717c1975551b7ecc1b3"><div class="ttname"><a href="classaudio__tools_1_1_f_l_a_c_encoder.html#a016bb39af201e717c1975551b7ecc1b3">audio_tools::FLACEncoder::write</a></div><div class="ttdeci">virtual size_t write(const uint8_t *data, size_t len) override</div><div class="ttdoc">Writes FLAC Packet.</div><div class="ttdef"><b>Definition:</b> CodecFLAC.h:364</div></div>
 <div class="ttc" id="aclassaudio__tools_1_1_f_l_a_c_encoder_html_a065fe4c0d3543644ab523a5d9b5fb9c0"><div class="ttname"><a href="classaudio__tools_1_1_f_l_a_c_encoder.html#a065fe4c0d3543644ab523a5d9b5fb9c0">audio_tools::FLACEncoder::setOutput</a></div><div class="ttdeci">void setOutput(Print &amp;out_stream) override</div><div class="ttdoc">Defines the output Stream.</div><div class="ttdef"><b>Definition:</b> CodecFLAC.h:299</div></div>
-<div class="ttc" id="aclassaudio__tools_1_1_f_l_a_c_encoder_html_a1b29912258e11751cfa24707a4e328ca"><div class="ttname"><a href="classaudio__tools_1_1_f_l_a_c_encoder.html#a1b29912258e11751cfa24707a4e328ca">audio_tools::FLACEncoder::write</a></div><div class="ttdeci">virtual size_t write(const void *in_ptr, size_t in_size) override</div><div class="ttdoc">Writes FLAC Packet.</div><div class="ttdef"><b>Definition:</b> CodecFLAC.h:364</div></div>
 <div class="ttc" id="aclassaudio__tools_1_1_f_l_a_c_encoder_html_a1c62d9231df12647650df1d82033f42c"><div class="ttname"><a href="classaudio__tools_1_1_f_l_a_c_encoder.html#a1c62d9231df12647650df1d82033f42c">audio_tools::FLACEncoder::~FLACEncoder</a></div><div class="ttdeci">~FLACEncoder()</div><div class="ttdoc">Destructor - calls end();.</div><div class="ttdef"><b>Definition:</b> CodecFLAC.h:278</div></div>
 <div class="ttc" id="aclassaudio__tools_1_1_f_l_a_c_encoder_html_a4d2a8f208d69989c8676b0c632c9ea5c"><div class="ttname"><a href="classaudio__tools_1_1_f_l_a_c_encoder.html#a4d2a8f208d69989c8676b0c632c9ea5c">audio_tools::FLACEncoder::begin</a></div><div class="ttdeci">virtual bool begin() override</div><div class="ttdoc">starts the processing using the actual AudioInfo</div><div class="ttdef"><b>Definition:</b> CodecFLAC.h:311</div></div>
 <div class="ttc" id="aclassaudio__tools_1_1_f_l_a_c_encoder_html_a5d63922f6bdb7c371286ca453ae18f9c"><div class="ttname"><a href="classaudio__tools_1_1_f_l_a_c_encoder.html#a5d63922f6bdb7c371286ca453ae18f9c">audio_tools::FLACEncoder::mime</a></div><div class="ttdeci">const char * mime() override</div><div class="ttdoc">Provides &quot;audio/pcm&quot;.</div><div class="ttdef"><b>Definition:</b> CodecFLAC.h:302</div></div>

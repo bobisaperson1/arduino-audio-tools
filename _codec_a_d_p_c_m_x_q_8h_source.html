@@ -145,17 +145,17 @@ $(function() {
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <span class="keyword">operator</span> bool()<span class="keyword"> override </span>{ <span class="keywordflow">return</span> adpcm_cnxt != <span class="keyword">nullptr</span>; }</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">size_t</span> write(<span class="keyword">const</span> <span class="keywordtype">void</span> *input_buffer, <span class="keywordtype">size_t</span> length) {</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    uint8_t *input_buffer8 = (uint8_t *)input_buffer;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    LOGD(<span class="stringliteral">&quot;write: %d&quot;</span>, (<span class="keywordtype">int</span>)length);</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; length; j++) {</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">size_t</span> write(<span class="keyword">const</span> uint8_t *data, <span class="keywordtype">size_t</span> len) {</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    uint8_t *input_buffer8 = (uint8_t *)data;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    LOGD(<span class="stringliteral">&quot;write: %d&quot;</span>, (<span class="keywordtype">int</span>)len);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; len; j++) {</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;      adpcm_block[current_byte++] = input_buffer8[j];</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;      <span class="keywordflow">if</span> (current_byte == block_size) {</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        decode(current_byte);</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        current_byte = 0;</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;      }</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    }</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordflow">return</span> length;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordflow">return</span> len;</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  }</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; <span class="keyword">protected</span>:</div>
@@ -239,18 +239,18 @@ $(function() {
 <div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160; </div>
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;  <span class="keyword">operator</span> bool()<span class="keyword"> override </span>{ <span class="keywordflow">return</span> adpcm_cnxt != <span class="keyword">nullptr</span>; }</div>
 <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160; </div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;  <span class="keywordtype">size_t</span> write(<span class="keyword">const</span> <span class="keywordtype">void</span> *in_ptr, <span class="keywordtype">size_t</span> in_size)<span class="keyword"> override </span>{</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    LOGD(<span class="stringliteral">&quot;write: %d&quot;</span>, (<span class="keywordtype">int</span>)in_size);</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    int16_t *input_buffer = (int16_t *)in_ptr;</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;  <span class="keywordtype">size_t</span> write(<span class="keyword">const</span> uint8_t *data, <span class="keywordtype">size_t</span> len)<span class="keyword"> override </span>{</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    LOGD(<span class="stringliteral">&quot;write: %d&quot;</span>, (<span class="keywordtype">int</span>)len);</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    int16_t *input_buffer = (int16_t *)data;</div>
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    pcm_block_size = samples_per_block * info.<a class="code" href="structaudio__tools_1_1_audio_info.html#a1ac7822956f57069d76da865d6b33c55">channels</a>;</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; in_size / 2; j++) {</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; len / 2; j++) {</div>
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;      pcm_block[current_sample++] = input_buffer[j];</div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;      <span class="keywordflow">if</span> (current_sample == samples_per_block * info.<a class="code" href="structaudio__tools_1_1_audio_info.html#a1ac7822956f57069d76da865d6b33c55">channels</a>) {</div>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        encode();</div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        current_sample = 0;</div>
 <div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;      }</div>
 <div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    }</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    <span class="keywordflow">return</span> in_size;</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    <span class="keywordflow">return</span> len;</div>
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;  }</div>
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160; </div>
 <div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160; <span class="keyword">protected</span>:</div>

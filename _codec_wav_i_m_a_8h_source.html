@@ -381,25 +381,25 @@ $(function() {
 <div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;            <span class="keywordflow">return</span> header.audioInfo();</div>
 <div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;        }</div>
 <div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160; </div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">size_t</span> write(<span class="keyword">const</span> <span class="keywordtype">void</span> *in_ptr, <span class="keywordtype">size_t</span> in_size) {</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">size_t</span> write(<span class="keyword">const</span> uint8_t *data, <span class="keywordtype">size_t</span> len) {</div>
 <div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;            TRACED();</div>
 <div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;            <span class="keywordflow">if</span> (active) {</div>
 <div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;                <span class="keywordflow">if</span> (isFirst) {</div>
 <div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;                    <span class="comment">// we expect at least the full header</span></div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;                    <span class="keywordtype">int</span> written = header.write((uint8_t*)in_ptr, in_size);</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;                    <span class="keywordtype">int</span> written = header.write((uint8_t*)data, len);</div>
 <div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;                    <span class="keywordflow">if</span> (written == IMA_ERR_INVALID_CONTAINER || written == IMA_ERR_INVALID_CHUNK) {</div>
 <div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;                        isValid = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;                        isFirst = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;                        LOGE(<span class="stringliteral">&quot;File is not valid&quot;</span>);</div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;                        <span class="keywordflow">return</span> in_size;</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;                        <span class="keywordflow">return</span> len;</div>
 <div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;                    }</div>
 <div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160; </div>
 <div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;                    <span class="keywordflow">if</span> (!header.<a class="code" href="classaudio__tools_1_1_wav_i_m_a_header.html#a1ff465571c87cad9bcbfcfd1d573b7d2">isDataComplete</a>()) {</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;                        <span class="keywordflow">return</span> in_size;</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;                        <span class="keywordflow">return</span> len;</div>
 <div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;                    }</div>
 <div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160; </div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;                    <span class="keywordtype">size_t</span> len = in_size - written;</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;                    uint8_t *sound_ptr = (uint8_t *) in_ptr + written;</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;                    <span class="keywordtype">size_t</span> len_open = len - written;</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;                    uint8_t *sound_ptr = (uint8_t *) data + written;</div>
 <div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;                    isFirst = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;                    isValid = header.audioInfo().is_valid;</div>
 <div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160; </div>
@@ -425,13 +425,13 @@ $(function() {
 <div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;                        notifyAudioChange(bi);</div>
 <div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;                        <span class="comment">// write prm data from first record</span></div>
 <div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;                        LOGI(<span class="stringliteral">&quot;WavIMADecoder writing first sound data&quot;</span>);</div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;                        processInput(sound_ptr, len);</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;                        processInput(sound_ptr, len_open);</div>
 <div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;                    }</div>
 <div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;                } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (isValid) {</div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;                    processInput((uint8_t*)in_ptr, in_size);</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;                    processInput((uint8_t*)data, len);</div>
 <div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;                }</div>
 <div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;            }</div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;            <span class="keywordflow">return</span> in_size;</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;            <span class="keywordflow">return</span> len;</div>
 <div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;        }</div>
 <div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160; </div>
 <div class="line"><a name="l00413"></a><span class="lineno"><a class="line" href="classaudio__tools_1_1_wav_i_m_a_decoder.html#ab754136602e0bb22ec2be26dedd9ff50">  413</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="classaudio__tools_1_1_wav_i_m_a_decoder.html#ab754136602e0bb22ec2be26dedd9ff50">readStream</a>(<a class="code" href="classaudio__tools_1_1_stream.html">Stream</a> &amp;in) {</div>

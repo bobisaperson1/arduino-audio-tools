@@ -107,24 +107,24 @@ $(function() {
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    info = from;</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  }</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">size_t</span> write(<span class="keyword">const</span> <span class="keywordtype">void</span> *in_ptr, <span class="keywordtype">size_t</span> in_size)<span class="keyword"> override </span>{</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">size_t</span> write(<span class="keyword">const</span> uint8_t *data, <span class="keywordtype">size_t</span> len)<span class="keyword"> override </span>{</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordflow">if</span> (p_print == <span class="keyword">nullptr</span>) <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    buffer.resize(in_size);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    memset(buffer.data(), 0, in_size * 2);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    buffer.resize(len);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    memset(buffer.data(), 0, len * 2);</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordflow">if</span> (is_signed) {</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;      int8_t *pt8 = (int8_t *)in_ptr;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;      <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> j = 0; j &lt; in_size; j++) {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;      int8_t *pt8 = (int8_t *)data;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;      <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> j = 0; j &lt; len; j++) {</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        buffer[j] = convertSample(pt8[j]);</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      }</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      uint8_t *pt8 = (uint8_t *)in_ptr;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;      <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> j = 0; j &lt; in_size; j++) {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      uint8_t *pt8 = (uint8_t *)data;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;      <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> j = 0; j &lt; len; j++) {</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        buffer[j] = convertSample(pt8[j]);</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;      }</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    }</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordtype">int</span> write_byte_count = in_size * <span class="keyword">sizeof</span>(int16_t);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordtype">int</span> write_byte_count = len * <span class="keyword">sizeof</span>(int16_t);</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordtype">size_t</span> result = p_print-&gt;write((uint8_t *)buffer.data(), write_byte_count);</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    LOGD(<span class="stringliteral">&quot;DecoderL8 %d -&gt; %d -&gt; %d&quot;</span>, (<span class="keywordtype">int</span>)in_size, write_byte_count, (<span class="keywordtype">int</span>)result);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    LOGD(<span class="stringliteral">&quot;DecoderL8 %d -&gt; %d -&gt; %d&quot;</span>, (<span class="keywordtype">int</span>)len, write_byte_count, (<span class="keywordtype">int</span>)result);</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordflow">return</span> result / <span class="keyword">sizeof</span>(int16_t);</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  }</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
@@ -170,10 +170,10 @@ $(function() {
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
 <div class="line"><a name="l00150"></a><span class="lineno"><a class="line" href="classaudio__tools_1_1_encoder_l8.html#a64e9fa75beda50a9e8400ee0d4e61984">  150</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classaudio__tools_1_1_encoder_l8.html#a64e9fa75beda50a9e8400ee0d4e61984">end</a>()<span class="keyword"> override </span>{ is_open = <span class="keyword">false</span>; }</div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
-<div class="line"><a name="l00153"></a><span class="lineno"><a class="line" href="classaudio__tools_1_1_encoder_l8.html#ac9df001cacfb1816fb8f2cf871450c4a">  153</a></span>&#160;  <span class="keywordtype">size_t</span> <a class="code" href="classaudio__tools_1_1_encoder_l8.html#ac9df001cacfb1816fb8f2cf871450c4a">write</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> *in_ptr, <span class="keywordtype">size_t</span> in_size)<span class="keyword"> override </span>{</div>
+<div class="line"><a name="l00153"></a><span class="lineno"><a class="line" href="classaudio__tools_1_1_encoder_l8.html#a7597ef706dd1aa590903ce9e095db20a">  153</a></span>&#160;  <span class="keywordtype">size_t</span> <a class="code" href="classaudio__tools_1_1_encoder_l8.html#a7597ef706dd1aa590903ce9e095db20a">write</a>(<span class="keyword">const</span> uint8_t *data, <span class="keywordtype">size_t</span> len)<span class="keyword"> override </span>{</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="keywordflow">if</span> (p_print == <span class="keyword">nullptr</span>) <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    int16_t *pt16 = (int16_t *)in_ptr;</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="keywordtype">size_t</span> samples = in_size / 2;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    int16_t *pt16 = (int16_t *)data;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="keywordtype">size_t</span> samples = len / 2;</div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    buffer.resize(samples);</div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    memset(buffer.data(), 0, samples);</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> j = 0; j &lt; samples; j++) {</div>
@@ -181,7 +181,7 @@ $(function() {
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    }</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; </div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <span class="keywordtype">size_t</span> result = p_print-&gt;write((uint8_t *)buffer.data(), samples);</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    LOGD(<span class="stringliteral">&quot;EncoderL8 %d -&gt; %d -&gt; %d&quot;</span>, (<span class="keywordtype">int</span>)in_size,(<span class="keywordtype">int</span>) samples, (<span class="keywordtype">int</span>)result);</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    LOGD(<span class="stringliteral">&quot;EncoderL8 %d -&gt; %d -&gt; %d&quot;</span>, (<span class="keywordtype">int</span>)len,(<span class="keywordtype">int</span>) samples, (<span class="keywordtype">int</span>)result);</div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <span class="keywordflow">return</span> result * <span class="keyword">sizeof</span>(int16_t);</div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;  }</div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; </div>
@@ -228,7 +228,7 @@ $(function() {
 <div class="ttc" id="aclassaudio__tools_1_1_encoder_l8_html_a5d63922f6bdb7c371286ca453ae18f9c"><div class="ttname"><a href="classaudio__tools_1_1_encoder_l8.html#a5d63922f6bdb7c371286ca453ae18f9c">audio_tools::EncoderL8::mime</a></div><div class="ttdeci">const char * mime() override</div><div class="ttdoc">Provides &quot;audio/pcm&quot;.</div><div class="ttdef"><b>Definition:</b> CodecL8.h:138</div></div>
 <div class="ttc" id="aclassaudio__tools_1_1_encoder_l8_html_a64e9fa75beda50a9e8400ee0d4e61984"><div class="ttname"><a href="classaudio__tools_1_1_encoder_l8.html#a64e9fa75beda50a9e8400ee0d4e61984">audio_tools::EncoderL8::end</a></div><div class="ttdeci">void end() override</div><div class="ttdoc">stops the processing</div><div class="ttdef"><b>Definition:</b> CodecL8.h:150</div></div>
 <div class="ttc" id="aclassaudio__tools_1_1_encoder_l8_html_a6e82619a0a3aa2c31962d9a26bb11de0"><div class="ttname"><a href="classaudio__tools_1_1_encoder_l8.html#a6e82619a0a3aa2c31962d9a26bb11de0">audio_tools::EncoderL8::begin</a></div><div class="ttdeci">bool begin(Print &amp;out)</div><div class="ttdoc">starts the processing</div><div class="ttdef"><b>Definition:</b> CodecL8.h:144</div></div>
-<div class="ttc" id="aclassaudio__tools_1_1_encoder_l8_html_ac9df001cacfb1816fb8f2cf871450c4a"><div class="ttname"><a href="classaudio__tools_1_1_encoder_l8.html#ac9df001cacfb1816fb8f2cf871450c4a">audio_tools::EncoderL8::write</a></div><div class="ttdeci">size_t write(const void *in_ptr, size_t in_size) override</div><div class="ttdoc">Writes PCM data to be encoded as RAW.</div><div class="ttdef"><b>Definition:</b> CodecL8.h:153</div></div>
+<div class="ttc" id="aclassaudio__tools_1_1_encoder_l8_html_a7597ef706dd1aa590903ce9e095db20a"><div class="ttname"><a href="classaudio__tools_1_1_encoder_l8.html#a7597ef706dd1aa590903ce9e095db20a">audio_tools::EncoderL8::write</a></div><div class="ttdeci">size_t write(const uint8_t *data, size_t len) override</div><div class="ttdoc">Writes PCM data to be encoded as RAW.</div><div class="ttdef"><b>Definition:</b> CodecL8.h:153</div></div>
 <div class="ttc" id="aclassaudio__tools_1_1_encoder_l8_html_acba365cc28eb702040c382646cfb0a7a"><div class="ttname"><a href="classaudio__tools_1_1_encoder_l8.html#acba365cc28eb702040c382646cfb0a7a">audio_tools::EncoderL8::begin</a></div><div class="ttdeci">bool begin() override</div><div class="ttdoc">starts the processing using the actual RAWAudioInfo</div><div class="ttdef"><b>Definition:</b> CodecL8.h:141</div></div>
 <div class="ttc" id="aclassaudio__tools_1_1_print_html"><div class="ttname"><a href="classaudio__tools_1_1_print.html">audio_tools::Print</a></div><div class="ttdef"><b>Definition:</b> NoArduino.h:58</div></div>
 <div class="ttc" id="anamespaceaudio__tools_html"><div class="ttname"><a href="namespaceaudio__tools.html">audio_tools</a></div><div class="ttdoc">Generic Implementation of sound input and output for desktop environments using portaudio.</div><div class="ttdef"><b>Definition:</b> AnalogAudioArduino.h:12</div></div>

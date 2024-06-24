@@ -155,9 +155,9 @@ virtual int8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el
 <tr class="memitem:a0d52c0ed98e047d782054fa126b281e5"><td class="memItemLeft" align="right" valign="top"><a id="a0d52c0ed98e047d782054fa126b281e5"></a>
 virtual&#160;</td><td class="memItemRight" valign="bottom"><b>operator bool</b> ()</td></tr>
 <tr class="separator:a0d52c0ed98e047d782054fa126b281e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a43061a6ac2343137b176333cb989ba48"><td class="memItemLeft" align="right" valign="top"><a id="a43061a6ac2343137b176333cb989ba48"></a>
-virtual size_t&#160;</td><td class="memItemRight" valign="bottom"><b>readBytes</b> (uint8_t *buffer, size_t length) override</td></tr>
-<tr class="separator:a43061a6ac2343137b176333cb989ba48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6406b16cb31ad79201459cb48b1ad6f0"><td class="memItemLeft" align="right" valign="top"><a id="a6406b16cb31ad79201459cb48b1ad6f0"></a>
+virtual size_t&#160;</td><td class="memItemRight" valign="bottom"><b>readBytes</b> (uint8_t *data, size_t len) override</td></tr>
+<tr class="separator:a6406b16cb31ad79201459cb48b1ad6f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a36e26f40121eda38b0042dcba026ab82"><td class="memItemLeft" align="right" valign="top"><a id="a36e26f40121eda38b0042dcba026ab82"></a>
 virtual size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaudio__tools_1_1_audio_stream.html#a36e26f40121eda38b0042dcba026ab82">readSilence</a> (uint8_t *buffer, size_t length)</td></tr>
 <tr class="memdesc:a36e26f40121eda38b0042dcba026ab82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Source to generate silence: just sets the buffer to 0. <br /></td></tr>
@@ -177,10 +177,10 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>setInterprete
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaudio__tools_1_1_audio_info_source.html#a909f118906f9cf7024baae224dcd90a7">setNotifyActive</a> (bool flag)</td></tr>
 <tr class="memdesc:a909f118906f9cf7024baae224dcd90a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deactivate/Reactivate automatic <a class="el" href="structaudio__tools_1_1_audio_info.html" title="Basic Audio information which drives e.g. I2S.">AudioInfo</a> updates: (default is active) <br /></td></tr>
 <tr class="separator:a909f118906f9cf7024baae224dcd90a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6e5c54247d654a08f84b46f61abbf2a2"><td class="memItemLeft" align="right" valign="top"><a id="a6e5c54247d654a08f84b46f61abbf2a2"></a>
-virtual size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaudio__tools_1_1_tf_lite_audio_stream_base.html#a6e5c54247d654a08f84b46f61abbf2a2">write</a> (const uint8_t *audio, size_t bytes)=0</td></tr>
-<tr class="memdesc:a6e5c54247d654a08f84b46f61abbf2a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">process the data in batches of max kMaxAudioSampleSize. <br /></td></tr>
-<tr class="separator:a6e5c54247d654a08f84b46f61abbf2a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f016ab9037bd654f538f107eb1d8f78"><td class="memItemLeft" align="right" valign="top"><a id="a4f016ab9037bd654f538f107eb1d8f78"></a>
+virtual size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaudio__tools_1_1_tf_lite_audio_stream_base.html#a4f016ab9037bd654f538f107eb1d8f78">write</a> (const uint8_t *data, size_t len)=0</td></tr>
+<tr class="memdesc:a4f016ab9037bd654f538f107eb1d8f78"><td class="mdescLeft">&#160;</td><td class="mdescRight">process the data in batches of max kMaxAudioSampleSize. <br /></td></tr>
+<tr class="separator:a4f016ab9037bd654f538f107eb1d8f78"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adffba128cba62b029746648f6946945c"><td class="memItemLeft" align="right" valign="top"><a id="adffba128cba62b029746648f6946945c"></a>
 virtual size_t&#160;</td><td class="memItemRight" valign="bottom"><b>write</b> (uint8_t ch) override</td></tr>
 <tr class="separator:adffba128cba62b029746648f6946945c"><td class="memSeparator" colspan="2">&#160;</td></tr>

@@ -193,10 +193,10 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class
 size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaudio__tools_1_1_audio_output_with_callback.html#a3be5203f6b3374755564ef01d3aabd8c">read</a> (Frame *src, size_t len)</td></tr>
 <tr class="memdesc:a3be5203f6b3374755564ef01d3aabd8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides the data from the internal buffer to the callback. <br /></td></tr>
 <tr class="separator:a3be5203f6b3374755564ef01d3aabd8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af38d1a10057f59d3374bcf400c1be036"><td class="memItemLeft" align="right" valign="top"><a id="af38d1a10057f59d3374bcf400c1be036"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaudio__tools_1_1_buffered_stream.html#af38d1a10057f59d3374bcf400c1be036">readBytes</a> (uint8_t *data, size_t length) override</td></tr>
-<tr class="memdesc:af38d1a10057f59d3374bcf400c1be036"><td class="mdescLeft">&#160;</td><td class="mdescRight">Use this method !! <br /></td></tr>
-<tr class="separator:af38d1a10057f59d3374bcf400c1be036"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c5c6275ddee80eb02839356b6185c0b"><td class="memItemLeft" align="right" valign="top"><a id="a4c5c6275ddee80eb02839356b6185c0b"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaudio__tools_1_1_buffered_stream.html#a4c5c6275ddee80eb02839356b6185c0b">readBytes</a> (uint8_t *data, size_t len) override</td></tr>
+<tr class="memdesc:a4c5c6275ddee80eb02839356b6185c0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Use this method !! <br /></td></tr>
+<tr class="separator:a4c5c6275ddee80eb02839356b6185c0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a36e26f40121eda38b0042dcba026ab82"><td class="memItemLeft" align="right" valign="top"><a id="a36e26f40121eda38b0042dcba026ab82"></a>
 virtual size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaudio__tools_1_1_audio_stream.html#a36e26f40121eda38b0042dcba026ab82">readSilence</a> (uint8_t *buffer, size_t length)</td></tr>
 <tr class="memdesc:a36e26f40121eda38b0042dcba026ab82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Source to generate silence: just sets the buffer to 0. <br /></td></tr>
@@ -236,13 +236,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaudio__tools_1_1_audio_output_with_callback.html#a3d0f1501fa4ccfb9e3f868ab4a185856">stop</a> ()</td></tr>
 <tr class="memdesc:a3d0f1501fa4ccfb9e3f868ab4a185856"><td class="mdescLeft">&#160;</td><td class="mdescRight">stops the processing <br /></td></tr>
 <tr class="separator:a3d0f1501fa4ccfb9e3f868ab4a185856"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2dc19ad83d7464f1a4c104d76ba37aa7"><td class="memItemLeft" align="right" valign="top"><a id="a2dc19ad83d7464f1a4c104d76ba37aa7"></a>
-virtual size_t&#160;</td><td class="memItemRight" valign="bottom"><b>write</b> (const uint8_t *buffer, size_t size) override=0</td></tr>
-<tr class="separator:a2dc19ad83d7464f1a4c104d76ba37aa7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7597ef706dd1aa590903ce9e095db20a"><td class="memItemLeft" align="right" valign="top"><a id="a7597ef706dd1aa590903ce9e095db20a"></a>
 size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaudio__tools_1_1_buffered_stream.html#a7597ef706dd1aa590903ce9e095db20a">write</a> (const uint8_t *data, size_t len) override</td></tr>
 <tr class="memdesc:a7597ef706dd1aa590903ce9e095db20a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Use this method: write an array. <br /></td></tr>
 <tr class="separator:a7597ef706dd1aa590903ce9e095db20a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1f174f043746b4c057475c45b6678ad"><td class="memItemLeft" align="right" valign="top"><a id="ae1f174f043746b4c057475c45b6678ad"></a>
+virtual size_t&#160;</td><td class="memItemRight" valign="bottom"><b>write</b> (const uint8_t *data, size_t len) override=0</td></tr>
+<tr class="separator:ae1f174f043746b4c057475c45b6678ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e40195a444e7f20508961cfeacc9b04"><td class="memItemLeft" align="right" valign="top"><a id="a1e40195a444e7f20508961cfeacc9b04"></a>
 size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaudio__tools_1_1_buffered_stream.html#a1e40195a444e7f20508961cfeacc9b04">write</a> (uint8_t c) override</td></tr>
 <tr class="memdesc:a1e40195a444e7f20508961cfeacc9b04"><td class="mdescLeft">&#160;</td><td class="mdescRight">writes a byte to the buffer <br /></td></tr>
