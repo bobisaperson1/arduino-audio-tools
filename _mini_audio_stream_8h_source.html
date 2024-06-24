@@ -198,85 +198,86 @@ $(function() {
 <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    <span class="comment">// This will stop the device so no need to do that manually.</span></div>
 <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    ma_device_uninit(&amp;device_ma);</div>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="comment">// release buffer memory</span></div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <span class="keyword">delete</span> (p_buffer_in);</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    p_buffer_in = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    <span class="keyword">delete</span> (p_buffer_out);</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    p_buffer_out = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;  }</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    buffer_in.resize(0,0);</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    buffer_out.resize(0,0);</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;  }</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160; </div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;  <span class="keywordtype">int</span> availableForWrite()<span class="keyword"> override </span>{ <span class="keywordflow">return</span> buffer_out.size()==0 ? 0 : buffer_out.<a class="code" href="classaudio__tools_1_1_n_buffer.html#a86aa7db83a28e2662e01c57a36681cb0">availableForWrite</a>(); }</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160; </div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;  <span class="keywordtype">int</span> availableForWrite()<span class="keyword"> override </span>{ <span class="keywordflow">return</span> p_buffer_out==<span class="keyword">nullptr</span>? 0 : p_buffer_out-&gt;<a class="code" href="classaudio__tools_1_1_n_buffer.html#a86aa7db83a28e2662e01c57a36681cb0">availableForWrite</a>(); }</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;  <span class="keywordtype">size_t</span> write(<span class="keyword">const</span> uint8_t *data, <span class="keywordtype">size_t</span> len)<span class="keyword"> override </span>{</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="keywordflow">if</span> (p_buffer_out==<span class="keyword">nullptr</span>) <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    LOGD(<span class="stringliteral">&quot;write: %zu&quot;</span>, len);</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <span class="comment">//std::lock_guard&lt;mutex&gt; qLock(mtxQueue);</span></div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <span class="keywordtype">size_t</span> result = p_buffer_out-&gt;<a class="code" href="classaudio__tools_1_1_base_buffer.html#a2b6c561aac2af64aafac1946b6e46393">writeArray</a>(data, len);</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <span class="keywordflow">if</span> (!is_playing &amp;&amp; p_buffer_out-&gt;bufferCountFilled()&gt;=MA_START_COUNT) {</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;      is_playing = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    }</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <span class="comment">//std::this_thread::yield();</span></div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <span class="keywordflow">return</span> result;</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;  }</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; </div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;  <span class="keywordtype">int</span> available()<span class="keyword"> override </span>{  <span class="keywordflow">return</span> p_buffer_in==<span class="keyword">nullptr</span> ? 0 : p_buffer_in-&gt;<a class="code" href="classaudio__tools_1_1_n_buffer.html#a4549a76725f2e4c013e4d57018366109">available</a>(); }</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160; </div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;  <span class="keywordtype">size_t</span> readBytes(uint8_t *data, <span class="keywordtype">size_t</span> len)<span class="keyword"> override </span>{</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <span class="keywordflow">if</span> (p_buffer_in==<span class="keyword">nullptr</span>) <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    LOGD(<span class="stringliteral">&quot;write: %zu&quot;</span>, len);</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <span class="comment">//std::lock_guard&lt;mutex&gt; qLock(mtxQueue);</span></div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <span class="keywordflow">return</span> p_buffer_in-&gt;<a class="code" href="classaudio__tools_1_1_base_buffer.html#a163c69bc2b88421988d60f4efddb1f3f">readArray</a>(data, len);</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;  }</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160; </div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; <span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;  MiniAudioConfig config;</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;  ma_device_config config_ma;</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;  ma_device device_ma;</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;  <span class="keywordtype">bool</span> is_playing = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;  <span class="keywordtype">bool</span> is_active = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;  <span class="keywordtype">bool</span> is_buffers_setup = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;  NBuffer&lt;uint8_t&gt; *p_buffer_out = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;  NBuffer&lt;uint8_t&gt; *p_buffer_in = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;  <span class="comment">//std::mutex mtxQueue;</span></div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160; </div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;  <span class="comment">// In playback mode copy data to pOutput. In capture mode read data from</span></div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;  <span class="comment">// pInput. In full-duplex mode, both pOutput and pInput will be valid and</span></div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;  <span class="comment">// you can move data from pInput into pOutput. Never process more than</span></div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;  <span class="comment">// frameCount frames.</span></div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;  <span class="keywordtype">void</span> setupBuffers(<span class="keywordtype">int</span> size) {</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    <span class="keywordflow">if</span> (is_buffers_setup) <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    <span class="keywordflow">if</span> (p_buffer_out == <span class="keyword">nullptr</span> &amp;&amp; config.is_output)</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;      p_buffer_out = <span class="keyword">new</span> NBuffer&lt;uint8_t&gt;(size, MA_BUFFER_COUNT);</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    <span class="keywordflow">if</span> (p_buffer_in==<span class="keyword">nullptr</span> &amp;&amp; config.is_input)</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;      p_buffer_in = <span class="keyword">new</span> NBuffer&lt;uint8_t&gt;(size, MA_BUFFER_COUNT);</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    is_buffers_setup = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;  }</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160; </div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;  <span class="keyword">static</span> <span class="keywordtype">void</span> data_callback(ma_device *pDevice, <span class="keywordtype">void</span> *pOutput,</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;                            <span class="keyword">const</span> <span class="keywordtype">void</span> *pInput, ma_uint32 frameCount) {</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    MiniAudioStream *<span class="keyword">self</span> = (MiniAudioStream *)pDevice-&gt;pUserData;</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    AudioInfo cfg = self-&gt;audioInfo();</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160; </div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    <span class="keywordtype">int</span> bytes = frameCount * cfg.channels * cfg.bits_per_sample / 8;</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    <span class="keyword">self</span>-&gt;setupBuffers(bytes);</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160; </div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    <span class="keywordflow">if</span> (pInput) {</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;      <span class="comment">//std::unique_lock&lt;mutex&gt; qLock(self-&gt;mtxQueue);</span></div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;      <span class="keyword">self</span>-&gt;p_buffer_in-&gt;writeArray((uint8_t *)pInput, bytes);</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    }</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160; </div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    <span class="keywordflow">if</span> (pOutput) {</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;      memset(pOutput, 0, bytes);</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;      <span class="keywordflow">if</span> (self-&gt;is_playing ) {</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;          <span class="comment">//std::lock_guard&lt;mutex&gt; qLock(self-&gt;mtxQueue);</span></div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;          <span class="keyword">self</span>-&gt;p_buffer_out-&gt;readArray((uint8_t *)pOutput, bytes);</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;          std::this_thread::yield();</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;      }</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    } </div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;  }</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;};</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160; </div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;}  <span class="comment">// namespace audio_tools</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;  <span class="keywordtype">size_t</span> write(<span class="keyword">const</span> uint8_t *data, <span class="keywordtype">size_t</span> len)<span class="keyword"> override </span>{</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="keywordflow">if</span> (buffer_out.size()==0) <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    LOGD(<span class="stringliteral">&quot;write: %zu&quot;</span>, len);</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="comment">// blocking write</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    <span class="keywordflow">while</span>(buffer_out.<a class="code" href="classaudio__tools_1_1_n_buffer.html#a86aa7db83a28e2662e01c57a36681cb0">availableForWrite</a>()&lt;len){</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;      delay(10);</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    }</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <span class="keywordtype">size_t</span> result = buffer_out.<a class="code" href="classaudio__tools_1_1_base_buffer.html#a2b6c561aac2af64aafac1946b6e46393">writeArray</a>(data, len);</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    <span class="keywordflow">if</span> (!is_playing &amp;&amp; buffer_out.bufferCountFilled()&gt;=MA_START_COUNT) {</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;      is_playing = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    }</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <span class="keywordflow">return</span> result;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;  }</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; </div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;  <span class="keywordtype">int</span> available()<span class="keyword"> override </span>{  <span class="keywordflow">return</span> buffer_in.size()==0 ? 0 : buffer_in.<a class="code" href="classaudio__tools_1_1_n_buffer.html#a4549a76725f2e4c013e4d57018366109">available</a>(); }</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; </div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;  <span class="keywordtype">size_t</span> readBytes(uint8_t *data, <span class="keywordtype">size_t</span> len)<span class="keyword"> override </span>{</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="keywordflow">if</span> (buffer_in.size()==0) <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    LOGD(<span class="stringliteral">&quot;write: %zu&quot;</span>, len);</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <span class="comment">//std::lock_guard&lt;mutex&gt; qLock(mtxQueue);</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <span class="keywordflow">return</span> buffer_in.<a class="code" href="classaudio__tools_1_1_base_buffer.html#a163c69bc2b88421988d60f4efddb1f3f">readArray</a>(data, len);</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;  }</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; </div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160; <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;  MiniAudioConfig config;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;  ma_device_config config_ma;</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;  ma_device device_ma;</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;  <span class="keywordtype">bool</span> is_playing = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;  <span class="keywordtype">bool</span> is_active = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;  <span class="keywordtype">bool</span> is_buffers_setup = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;  NBuffer&lt;uint8_t&gt; buffer_out{0,0};</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;  NBuffer&lt;uint8_t&gt; buffer_in{0,0};</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;  <span class="comment">//std::mutex mtxQueue;</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160; </div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;  <span class="comment">// In playback mode copy data to pOutput. In capture mode read data from</span></div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;  <span class="comment">// pInput. In full-duplex mode, both pOutput and pInput will be valid and</span></div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;  <span class="comment">// you can move data from pInput into pOutput. Never process more than</span></div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;  <span class="comment">// frameCount frames.</span></div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160; </div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;  <span class="keywordtype">void</span> setupBuffers(<span class="keywordtype">int</span> size) {</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    <span class="keywordflow">if</span> (is_buffers_setup) <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    <span class="keywordflow">if</span> (buffer_out.size()==0 &amp;&amp; config.is_output)</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;      buffer_out.resize(size, MA_BUFFER_COUNT);</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    <span class="keywordflow">if</span> (buffer_in.size()==0 &amp;&amp; config.is_input)</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;      buffer_in.resize(size, MA_BUFFER_COUNT);</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    is_buffers_setup = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;  }</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160; </div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;  <span class="keyword">static</span> <span class="keywordtype">void</span> data_callback(ma_device *pDevice, <span class="keywordtype">void</span> *pOutput,</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                            <span class="keyword">const</span> <span class="keywordtype">void</span> *pInput, ma_uint32 frameCount) {</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    MiniAudioStream *<span class="keyword">self</span> = (MiniAudioStream *)pDevice-&gt;pUserData;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    AudioInfo cfg = self-&gt;audioInfo();</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160; </div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    <span class="keywordtype">int</span> bytes = frameCount * cfg.channels * cfg.bits_per_sample / 8;</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    <span class="keyword">self</span>-&gt;setupBuffers(bytes);</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160; </div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    <span class="keywordflow">if</span> (pInput) {</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;      <span class="comment">//std::unique_lock&lt;mutex&gt; qLock(self-&gt;mtxQueue);</span></div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;      <span class="keyword">self</span>-&gt;buffer_in.writeArray((uint8_t *)pInput, bytes);</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    }</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160; </div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    <span class="keywordflow">if</span> (pOutput) {</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;      memset(pOutput, 0, bytes);</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;      <span class="keywordflow">if</span> (self-&gt;is_playing ) {</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;          <span class="comment">//std::lock_guard&lt;mutex&gt; qLock(self-&gt;mtxQueue);</span></div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;          <span class="keyword">self</span>-&gt;buffer_out.readArray((uint8_t *)pOutput, bytes);</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;          std::this_thread::yield();</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;      }</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    } </div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;  }</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;};</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160; </div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;}  <span class="comment">// namespace audio_tools</span></div>
 <div class="ttc" id="a_audio_tools_8h_html"><div class="ttname"><a href="_audio_tools_8h.html">AudioTools.h</a></div></div>
 <div class="ttc" id="aclassaudio__tools_1_1_audio_stream_html"><div class="ttname"><a href="classaudio__tools_1_1_audio_stream.html">audio_tools::AudioStream</a></div><div class="ttdoc">Base class for all Audio Streams. It support the boolean operator to test if the object is ready with...</div><div class="ttdef"><b>Definition:</b> BaseStream.h:109</div></div>
 <div class="ttc" id="aclassaudio__tools_1_1_audio_stream_html_acbaca7240bc555603b0da5b7ca11ce10"><div class="ttname"><a href="classaudio__tools_1_1_audio_stream.html#acbaca7240bc555603b0da5b7ca11ce10">audio_tools::AudioStream::setAudioInfo</a></div><div class="ttdeci">virtual void setAudioInfo(AudioInfo newInfo) override</div><div class="ttdoc">Defines the input AudioInfo.</div><div class="ttdef"><b>Definition:</b> BaseStream.h:117</div></div>
