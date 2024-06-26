@@ -18,7 +18,7 @@ You can also use some simple earphones
 
 
 
-On the ESP32 the output is on the Pins GPIO26 and GPIO27
+On the ESP32 the output is on the Pins GPIO25 and GPIO26
 
 | PIEZO   |  ESP32           | UNO R4  |
 | --------| -----------------|---------|
